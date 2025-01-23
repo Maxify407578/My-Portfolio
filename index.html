@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxify407578 - GitHub Profil</title>
+    <style>
+        /* Allgemeine Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background: #121212;
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #1c1c1c;
+            padding: 20px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #e0e0e0;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #333;
+            padding: 10px;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar-toggle {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .navbar-links {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            justify-content: center;
+        }
+
+        .navbar-links li {
+            margin-right: 20px;
+        }
+
+        .navbar-links li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar-links li a:hover {
+            color: #ddd;
+        }
+
+        /* Farbiger Bereich Styles */
+        .colored-section {
+            background-color: #1a1a1a;
+            padding: 50px;
+            text-align: center;
+            color: #e0e0e0;
+        }
+
+        /* Media Queries für Navbar */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .navbar-links {
+                display: none;
+                width: 100%;
+            }
+
+            .navbar-links.active {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .navbar-toggle {
+                display: block;
+                align-self: flex-end;
+                padding: 10px;
+            }
+
+            .navbar-links li {
+                margin: 10px 0;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            background: #1f1f1f;
+            color: #e0e0e0;
+            padding: 1rem;
+            text-align: center;
+            z-index: 100;
+        }
+
+        nav a {
+            color: #90caf9;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            color: #e0e0e0;
+            transform: scale(1.1);
+        }
+
+        /* Hauptbereich */
+        main {
+            flex: 1;
+            padding: 3rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        section h2 {
+            color: #90caf9;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #64b5f6;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        section p {
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        section a {
+            color: #64b5f6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        section a:hover {
+            text-decoration: underline;
+            color: #e0e0e0;
+        }
+
+        ul {
+            list-style-type: square;
+            padding-left: 1.5rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #333;
+            color: #e0e0e0;
+            text-align: center;
+            padding: 1rem 0;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+
+        footer .social-icons {
+            margin-top: 1rem;
+        }
+
+        footer .social-icons a {
+            margin: 0 0.5rem;
+            color: #90caf9;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        footer .social-icons a:hover {
+            color: #e0e0e0;
+        }
+
+        /* Karte Styles */
+        .card {
+            background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+            box-shadow: 10px 10px 20px #0d0d0d, -10px -10px 20px #2f2f2f;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transform: perspective(1000px) rotateY(0deg);
+            transition: transform 0.6s ease;
+        }
+
+        .card:hover {
+            transform: perspective(1000px) rotateY(10deg);
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            background: linear-gradient(145deg, #90caf9, #42a5f5);
+            box-shadow: 5px 5px 10px #0d47a1, -5px -5px 10px #64b5f6;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            box-shadow: 5px 5px 10px #64b5f6, -5px -5px 10px #0d47a1;
+            transform: scale(1.1);
+        }
+
+        /* Details Styles */
+        details {
+            background: #2e2e2e;
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        details summary {
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #90caf9;
+        }
+
+        details summary:hover {
+            color: #e0e0e0;
+        }
+
+        details p {
+            margin-top: 0.5rem;
+            line-height: 1.6;
+        }
+
+        /* Testimonial Styles */
+        .testimonial {
+            background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.9);
+        }
+
+        .testimonial p {
+            font-style: italic;
+            color: #bdbdbd;
+            margin-bottom: 0.8rem;
+        }
+
+        .testimonial .author {
+            text-align: right;
+            font-weight: bold;
+            color: #90caf9;
+        }
+
+        /* Gallery Styles */
+        #projekt-galerie {
+            margin-bottom: 2rem;
+        }
+
+        .projekt-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .projekt-item {
+            background: #2e2e2e;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .projekt-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.9);
+        }
+
+        .projekt-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .projekt-item h3 {
+            font-size: 1.4rem;
+            color: #90caf9;
+            margin-bottom: 1rem;
+        }
+
+        .projekt-item p {
+            font-size: 1rem;
+            color: #e0e0e0;
+            margin-bottom: 1rem;
+        }
+
+        .projekt-item a {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background: linear-gradient(145deg, #90caf9, #42a5f5);
+            box-shadow: 5px 5px 10px #0d47a1, -5px -5px 10px #64b5f6;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .projekt-item a:hover {
+            box-shadow: 5px 5px 10px #64b5f6, -5px -5px 10px #0d47a1;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hauptinhalt der Seite -->
+    <header>
+        <h1>Willkommen auf Maxify GitHub-Profil</h1>
+        <p>Entdecken Sie spannende Projekte und mehr über Maxify407578.</p>
+    </header>  
+    <nav class="navbar">
+        <div class="navbar-toggle" onclick="toggleNavbar()">☰</div>
+        <ul class="navbar-links" id="navbarLinks">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Über uns</a></li>
+            <li><a href="#">Dienstleistungen</a></li>
+            <li><a href="#">Kontakt</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section id="ueber-maxify">
+            <h2></h2>
+            <div class="card">
+                <p>Maxify407578 ist ein leidenschaftlicher Entwickler mit Fokus auf innovative Technologien und kreative Open-Source-Projekte. Mit umfangreicher Erfahrung in Webentwicklung und Softwaredesign strebt er stets danach, qualitativ hochwertige und nützliche Lösungen zu entwickeln.</p>
+                <p>Besondere Interessen:
+                    <ul>
+                        <li>Künstliche Intelligenz und maschinelles Lernen</li>
+                        <li>Open-Source-Community und Kollaboration</li>
+                        <li>Effiziente und nachhaltige Softwareentwicklung</li>
+                        <li>Entwicklung moderner Webframeworks</li>
+                        <li>Blockchain-Technologien</li>
+                        <li>Cloud Computing und DevOps</li>
+                        <li>UI/UX-Design-Optimierung</li>
+                    </ul>
+                </p>
+            </div>
+        </section>
+        <section id="projekt-galerie">
+            <h2>Projekt Galerie</h2>
+            <div class="projekt-gallery">
+                <div class="projekt-item">
+                    <img src="Multi Tool png.png" alt="Projekt 1">
+                    <h3>Pc Multi-Pc-Tool</h3>
+                    <p>Ein Praktisches Multi Tool</p>
+                    <a href="https://github.com/Maxify407578/Multi-Pc-Tool" class="btn">Mehr erfahren</a>
+                </div>
+                <div class="projekt-item">
+                    <img src="Wheater app png.png" alt="Projekt 2">
+                    <h3>Wheater-App</h3>
+                    <p>Ein Coole und minimalistische Wetter App</p>
+                    <a href="https://github.com/Maxify407578/Wheater-App" class="btn">Mehr erfahren</a>
+                </div>
+                <div class="projekt-item">
+                    <img src="Chatbot png.png" alt="Projekt 3">
+                    <h3>Chatbot</h3>
+                    <p>Ein cooler Chatbot</p>
+                    <a href="https://github.com/Maxify407578/Chatbot" class="btn">Mehr erfahren</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <h2>FAQ</h2>
+            <details>
+                <summary>Was macht Maxify besonders?</summary>
+                <p>Maxify zeichnet sich durch seine Leidenschaft für innovative Technologien und seine Fähigkeit aus, nachhaltige und effiziente Lösungen zu entwickeln.</p>
+            </details>
+            <details>
+                <summary>Welche Programmiersprachen verwendet Maxify?</summary>
+                <p>Maxify hat Erfahrung in vielen Programmiersprachen, darunter JavaScript, Python, Auch wenn es keine Programmier ist aber ich Behersche auch Html.</p>
+            </details>
+            <details>
+                <summary>Wie kann ich mit Maxify zusammenarbeiten?</summary>
+                <p>Sie können Maxify über seine Kontaktinformationen erreichen, die im Abschnitt "Kontakt" angegeben sind.</p>
+            </details>
+            <details>
+                <summary>Welche Tools nutzt Maxify für die Entwicklung?</summary>
+                <p>Maxify verwendet Tools wie Git, Docker, Kubernetes, VS Code und IntelliJ IDEA, um eine effiziente Entwicklung zu gewährleisten.</p>
+            </details>
+        </section>
+        <section id="testimonials">
+            <h2>Testimonials</h2>
+            <details>
+                <summary>Anna Müller, CEO von TechCorp</summary>
+                <div class="testimonial">
+                    <p>"Maxify407578 hat uns mit seiner Expertise in der Webentwicklung beeindruckt. Die gelieferten Projekte waren stets qualitativ hochwertig und termingerecht!"</p>
+                </div>
+            </details>
+            <details>
+                <summary>Tobias Schmidt, Projektmanager</summary>
+                <div class="testimonial">
+                    <p>"Die Zusammenarbeit mit Maxify war eine Freude. Er bringt kreative Ideen ein und hat ein Auge fürs Detail, das unsere Projekte auf die nächste Stufe hebt."</p>
+                </div>
+            </details>
+            <details>
+                <summary>Julia Weber, Designerin</summary>
+                <div class="testimonial">
+                    <p>"Dank Maxify konnte ich meine Designs problemlos in funktionierende Webseiten umsetzen. Seine Unterstützung war unschätzbar."</p>
+                </div>
+            </details>
+        </section>
+        <section id="kontakt">
+            <h2>Kontakt</h2>
+            <div class="card">
+                <p>Möchten Sie mehr erfahren oder mit Maxify407578 in Kontakt treten? Hier sind einige Möglichkeiten, wie Sie ihn erreichen können:</p>
+                <ul>
+                    <li><strong>Email:</strong> <a href="mailto:maxify407578@example.com">maxify407578@example.com</a></li>
+                    <li><strong>GitHub:</strong> <a href="https://github.com/Maxify407578">https://github.com/Maxify407578</a></li>
+                    <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/max-schüller-b71a8b320/">https://linkedin.com/in/maxify407578</a></li>
+                    <li><strong>Twitter:</strong> <a href="https://twitter.com/Maxify407578">@Maxify407578</a></li>
+                </ul>
+                <p>Er freut sich über neue Verbindungen und spannende Gespräche!</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Maxify407578. Alle Rechte vorbehalten.</p>
+        <div class="social-icons">
+            <a href="https://twitter.com/Maxify407578" target="_blank">Twitter</a>
+            <a href="https://facebook.com/Maxify407578" target="_blank">Facebook</a>
+            <a href="https://instagram.com/Maxify407578" target="_blank">Instagram</a>
+            <a href="https://linkedin.com/in/maxify407578" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+    <script>
+        function toggleNavbar() {
+            const navbarLinks = document.getElementById('navbarLinks');
+            navbarLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
