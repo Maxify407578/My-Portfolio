@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - Maxify Portfolio</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #121212;
+            color: #e0e0e0;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .offline-container {
+            max-width: 600px;
+            padding: 40px;
+            background: #1e1e1e;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        h1 {
+            color: #90caf9;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+        
+        .icon {
+            font-size: 72px;
+            margin-bottom: 30px;
+            color: #90caf9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(145deg, #90caf9, #42a5f5);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="icon">📵</div>
+        <h1>Sie sind offline</h1>
+        <p>Es sieht so aus, als hätten Sie keine Internetverbindung. Der Inhalt dieser Seite ist nicht im Cache verfügbar.</p>
+        <p>Bitte stellen Sie Ihre Verbindung wieder her und versuchen Sie es erneut.</p>
+        <a href="/" class="btn">Zurück zur Startseite</a>
+    </div>
+    
+    <script>
+        // Überprüfung, ob die Verbindung wiederhergestellt wurde
+        window.addEventListener('online', function() {
+            window.location.reload();
+        });
+    </script>
+</body>
+</html> 

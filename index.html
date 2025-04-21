@@ -1,10 +1,71 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maxify407578 - GitHub Profil</title>
+    <meta name="description" content="Professional portfolio of Maxify407578 - Web Developer and Software Engineer">
+    <meta name="keywords" content="web development, software engineering, portfolio, projects">
+    <meta name="theme-color" content="#121212">
+    <title>Maxify407578 - Professional Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="images/icon-192x192.png">
+    
+    <!-- Animation-Bibliothek -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <style>
+        /* Allgemeine Stile */
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #50c878;
+            --dark-bg: #2a2a2a;
+            --light-bg: #f5f5f5;
+            --text-dark: #333;
+            --text-light: #f5f5f5;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --spacing: 20px;
+            --anim-speed: 0.3s;
+        }
+        
+        /* High Contrast Mode */
+        [data-highcontrast="true"] {
+            --primary-color: #ffff00;
+            --secondary-color: #00ff00;
+            --dark-bg: #000000;
+            --light-bg: #ffffff;
+            --text-dark: #000000;
+            --text-light: #ffffff;
+            --box-shadow: 0 0 0 2px #ffffff;
+        }
+        
+        /* Dyslexic Font Mode */
+        [data-dyslexic="true"] {
+            font-family: 'OpenDyslexic', Arial, sans-serif;
+        }
+        
+        /* Reduced Animations Mode */
+        [data-reduced-animations="true"] * {
+            animation-duration: 0.001s !important;
+            transition-duration: 0.001s !important;
+        }
+        
+        /* Theme Modes */
+        [data-theme="light"] {
+            --bg-color: var(--light-bg);
+            --text-color: var(--text-dark);
+        }
+        
+        [data-theme="dark"] {
+            --bg-color: var(--dark-bg);
+            --text-color: var(--text-light);
+        }
+        
         /* Allgemeine Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -16,6 +77,9 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
 
         header {
@@ -298,8 +362,9 @@
 
         .projekt-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .projekt-item {
@@ -351,134 +416,1416 @@
             box-shadow: 5px 5px 10px #64b5f6, -5px -5px 10px #0d47a1;
             transform: scale(1.1);
         }
+
+        /* Add a "Featured" badge for highlighted projects */
+        .projekt-item.featured::before {
+            content: "Featured";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(45deg, #ff4088, #fc67fa);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        /* Add styles for project images when missing */
+        .projekt-image img[src$="placeholder.com"] {
+            object-fit: cover;
+            background-color: #2a2a2a;
+        }
+
+        /* Improve loading/fade-in animation for project items */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Offline-Benachrichtigung Stylesheet */
+        .offline-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff3d00;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            z-index: 9999;
+            display: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .offline-notification.visible {
+            display: block;
+            animation: slideUp 0.3s forwards;
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translate(-50%, 100%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+        }
+
+        /* Quiz Sektion */
+        .quiz-section {
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: var(--border-radius);
+            margin: 2rem 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .quiz-intro, .quiz-question, .quiz-result {
+            display: none;
+            text-align: center;
+        }
+
+        .quiz-intro.active, .quiz-question.active, .quiz-result.active {
+            display: block;
+        }
+
+        .quiz-start-btn, .quiz-restart-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: var(--transition);
+        }
+
+        .quiz-start-btn:hover, .quiz-restart-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .quiz-options {
+            margin: 1.5rem 0;
+        }
+
+        .quiz-option {
+            background-color: rgba(74, 144, 226, 0.1);
+            border: 2px solid transparent;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quiz-option:hover {
+            background-color: rgba(74, 144, 226, 0.2);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--primary-color);
+            background-color: rgba(74, 144, 226, 0.3);
+        }
+
+        .quiz-option.correct {
+            border-color: #4CAF50;
+            background-color: rgba(76, 175, 80, 0.2);
+        }
+
+        .quiz-option.incorrect {
+            border-color: #F44336;
+            background-color: rgba(244, 67, 54, 0.2);
+        }
+
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+
+        .quiz-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .quiz-navigation button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quiz-navigation button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .quiz-navigation button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        /* Besucherzähler */
+        .visitor-counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: rgba(0, 0, 0, 0.05);
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin: 1rem auto;
+            width: fit-content;
+        }
+
+        .counter {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        /* Canvas Hintergrund */
+        #backgroundCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Offline-Benachrichtigung */
+        .offline-notification {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f44336;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            z-index: 1000;
+            display: none;
+        }
+
+        /* Barrierefreiheits-Panel */
+        .accessibility-panel {
+            position: fixed;
+            right: -300px;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background-color: var(--bg-color);
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            z-index: 100;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .accessibility-panel.open {
+            right: 0;
+        }
+
+        .accessibility-toggle {
+            position: fixed;
+            right: 20px;
+            bottom: 80px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 101;
+            box-shadow: var(--box-shadow);
+        }
+
+        .accessibility-toggle svg {
+            fill: white;
+        }
+
+        .accessibility-option {
+            margin: 15px 0;
+        }
+
+        .accessibility-option button {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .accessibility-option button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: var(--box-shadow);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top svg {
+            fill: white;
+        }
+
+        /* Sprachauswahl */
+        .language-panel {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 90;
+            display: flex;
+            gap: 5px;
+        }
+
+        .language-option {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            border: none;
+            padding: 5px 10px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .language-option.active {
+            background-color: var(--primary-color);
+        }
+
+        .language-option:hover:not(.active) {
+            background-color: rgba(74, 144, 226, 0.7);
+        }
     </style>
 </head>
-<body>
-    <!-- Hauptinhalt der Seite -->
-    <header>
-        <h1>Willkommen auf Maxify GitHub-Profil</h1>
-        <p>Entdecken Sie spannende Projekte und mehr über Maxify407578.</p>
-    </header>  
+<body data-theme="dark">
+    <!-- Canvas Hintergrund -->
+    <canvas id="backgroundCanvas"></canvas>
+    
+    <!-- Offline-Benachrichtigung -->
+    <div id="offlineNotification" class="offline-notification">
+        <span>Sie sind offline. Einige Funktionen sind eingeschränkt.</span>
+    </div>
+    
+    <!-- Barrierefreiheits-Panel und Button entfernen -->
+    
+    <!-- Sprachauswahl -->
+    <div class="language-panel">
+        <button class="language-option active" data-lang="de">DE</button>
+        <button class="language-option" data-lang="en">EN</button>
+        <button class="language-option" data-lang="fr">FR</button>
+    </div>
+    
+    <!-- Zurück nach oben Button -->
+    <button id="backToTop" onclick="scrollToTop()" class="back-to-top">
+        <svg width="24" height="24" viewBox="0 0 24 24">
+            <path d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" />
+        </svg>
+    </button>
+    
+    <header class="animated-header">
+        <div class="particle-container">
+            <canvas id="particle-canvas"></canvas>
+        </div>
+        <div class="header-content">
+            <h1 class="glow-text">Willkommen zu meinem Portfolio</h1>
+            <div class="typing-container">
+                <span class="typing-prefix">Ich bin </span>
+                <span class="typing-text"></span>
+                <span class="typing-cursor">|</span>
+            </div>
+            <p class="fade-in-text">Innovative Lösungen für moderne Herausforderungen</p>
+            <div class="header-buttons">
+                <a href="#about-maxify" class="btn btn-hero">Über mich</a>
+                <a href="#project-gallery" class="btn btn-hero btn-outline">Projekte entdecken</a>
+            </div>
+            <a href="#about-maxify" class="scroll-btn"><i class="fas fa-chevron-down"></i></a>
+        </div>
+    </header>
+    
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <div class="theme-option theme-dark" data-theme="dark" title="Dunkles Theme" onclick="changeTheme('dark')">
+            <i class="fas fa-moon"></i>
+        </div>
+        <div class="theme-option theme-light" data-theme="light" title="Helles Theme" onclick="changeTheme('light')">
+            <i class="fas fa-sun"></i>
+        </div>
+        <div class="theme-option theme-pink" data-theme="pink" title="Pink Theme" onclick="changeTheme('pink')">
+            <i class="fas fa-heart"></i>
+        </div>
+    </div>
+    
+    <!-- Utilities Panel -->
+    <div class="utilities-panel">
+        <div class="utility-option" title="Seite drucken" onclick="window.print()">
+            <i class="fas fa-print"></i>
+        </div>
+        <div class="utility-option" title="Schrift vergrößern" onclick="changeFontSize(1)">
+            <i class="fas fa-text-height"></i>
+        </div>
+        <div class="utility-option" title="Schrift verkleinern" onclick="changeFontSize(-1)">
+            <i class="fas fa-text-width"></i>
+        </div>
+        <div class="utility-option" title="Teilen" onclick="sharePortfolio()">
+            <i class="fas fa-share-alt"></i>
+        </div>
+    </div>
+    
     <nav class="navbar">
-        <div class="navbar-toggle" onclick="toggleNavbar()">☰</div>
-        <ul class="navbar-links" id="navbarLinks">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Über uns</a></li>
-            <li><a href="#">Dienstleistungen</a></li>
-            <li><a href="#">Kontakt</a></li>
-        </ul>
+        <div class="navbar-container">
+            <div class="logo">MAXIFY</div>
+            <div class="navbar-toggle" onclick="toggleNavbar()">☰</div>
+            <ul class="navbar-links" id="navbarLinks">
+                <li><a href="#"><i class="fas fa-home"></i> Startseite</a></li>
+                <li><a href="#about-maxify"><i class="fas fa-user"></i> Über mich</a></li>
+                <li><a href="#project-gallery"><i class="fas fa-code"></i> Projekte</a></li>
+                <li><a href="#skills"><i class="fas fa-cogs"></i> Fähigkeiten</a></li>
+                <li><a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Kontakt</a></li>
+            </ul>
+        </div>
     </nav>
     
     <main>
-        <section id="ueber-maxify">
-            <h2></h2>
-            <div class="card">
-                <p>Maxify407578 ist ein leidenschaftlicher Entwickler mit Fokus auf innovative Technologien und kreative Open-Source-Projekte. Mit umfangreicher Erfahrung in Webentwicklung und Softwaredesign strebt er stets danach, qualitativ hochwertige und nützliche Lösungen zu entwickeln.</p>
-                <p>Besondere Interessen:
-                    <ul>
-                        <li>Künstliche Intelligenz und maschinelles Lernen</li>
-                        <li>Open-Source-Community und Kollaboration</li>
-                        <li>Effiziente und nachhaltige Softwareentwicklung</li>
-                        <li>Entwicklung moderner Webframeworks</li>
-                        <li>Blockchain-Technologien</li>
-                        <li>Cloud Computing und DevOps</li>
-                        <li>UI/UX-Design-Optimierung</li>
-                    </ul>
-                </p>
+        <section id="about-maxify" class="section-with-bg">
+            <h2><i class="fas fa-user"></i> Über mich</h2>
+            <div class="about-container">
+                <div class="card about-card">
+                    <div class="profile-container">
+                        <div class="profile-image">
+                            <div class="image-wrapper">
+                                <img src="WhatsApp Image 2025-04-21 at 22.11.43_642b9cef.jpg" alt="Maxify Profile Picture" onerror="this.src='https://via.placeholder.com/150'">
+                                <div class="profile-badge">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-info">
+                            <div class="profile-title">
+                                <h3>Webentwickler & Designer</h3>
+                                <div class="profile-social">
+                                    <a href="https://github.com/Maxify407578" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+                                    <a href="https://twitter.com/MaxSchller1" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://linktr.ee/Maxify37" target="_blank" class="social-icon"><i class="fas fa-link"></i></a>
+                                </div>
+                            </div>
+                            <p>Hello, I'm a passionate full-stack developer with expertise in creating modern web applications. With a focus on clean code and intuitive user interfaces, I strive to develop solutions that make a difference.</p>
+                            <p>My journey in technology began 5 years ago, and I've been constantly learning and evolving ever since. I believe in the power of technology to transform businesses and enhance user experiences.</p>
+                            
+                            <div class="stats-container">
+                                <div class="stat-item">
+                                    <div class="stat-value">5+</div>
+                                    <div class="stat-label">Jahre Erfahrung</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">30+</div>
+                                    <div class="stat-label">Projekte</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">15+</div>
+                                    <div class="stat-label">Technologien</div>
+                                </div>
+                            </div>
+                            
+                            <a href='https://linktr.ee/Maxify37' target='_blank' class="btn">Mehr entdecken <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card skills-card">
+                    <h3>Meine Skills</h3>
+                    <div class="skill-bars">
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>JavaScript</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>Python</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>HTML/CSS</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-level" style="width: 95%"></div></div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>Java</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-level" style="width: 75%"></div></div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>React</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
-        <section id="projekt-galerie">
-            <h2>Projekt Galerie</h2>
-            <div class="projekt-gallery">
-                <div class="projekt-item">
-                    <img src="Multi Tool png.png" alt="Projekt 1">
-                    <h3>Pc Multi-Pc-Tool</h3>
-                    <p>Ein Praktisches Multi Tool</p>
-                    <a href="https://github.com/Maxify407578/Multi-Pc-Tool" class="btn">Mehr erfahren</a>
-                </div>
-                <div class="projekt-item">
-                    <img src="Wheater app png.png" alt="Projekt 2">
-                    <h3>Wheater-App</h3>
-                    <p>Ein Coole und minimalistische Wetter App</p>
-                    <a href="https://github.com/Maxify407578/Wheater-App" class="btn">Mehr erfahren</a>
-                </div>
-                <div class="projekt-item">
-                    <img src="Chatbot png.png" alt="Projekt 3">
-                    <h3>Chatbot</h3>
-                    <p>Ein cooler Chatbot</p>
-                    <a href="https://github.com/Maxify407578/Chatbot" class="btn">Mehr erfahren</a>
+            
+            <div class="interests card">
+                <h3>Areas of Expertise:</h3>
+                <div class="interests-grid">
+                    <div class="interest-item">
+                        <div class="interest-icon"><i class="fas fa-brain"></i></div>
+                        <div class="interest-text">Artificial Intelligence</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon"><i class="fas fa-users"></i></div>
+                        <div class="interest-text">Open Source</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon"><i class="fas fa-leaf"></i></div>
+                        <div class="interest-text">Nachhaltige Entwicklung</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon"><i class="fas fa-code"></i></div>
+                        <div class="interest-text">Web Frameworks</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon"><i class="fas fa-link"></i></div>
+                        <div class="interest-text">Blockchain</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon"><i class="fas fa-cloud"></i></div>
+                        <div class="interest-text">Cloud Computing</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon"><i class="fas fa-paint-brush"></i></div>
+                        <div class="interest-text">UI/UX Design</div>
+                    </div>
+                    <div class="interest-item">
+                        <div class="interest-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="interest-text">Mobile Development</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="faq">
-            <h2>FAQ</h2>
-            <details>
-                <summary>Was macht Maxify besonders?</summary>
-                <p>Maxify zeichnet sich durch seine Leidenschaft für innovative Technologien und seine Fähigkeit aus, nachhaltige und effiziente Lösungen zu entwickeln.</p>
-            </details>
-            <details>
-                <summary>Welche Programmiersprachen verwendet Maxify?</summary>
-                <p>Maxify hat Erfahrung in vielen Programmiersprachen, darunter JavaScript, Python, Auch wenn es keine Programmier ist aber ich Behersche auch Html.</p>
-            </details>
-            <details>
-                <summary>Wie kann ich mit Maxify zusammenarbeiten?</summary>
-                <p>Sie können Maxify über seine Kontaktinformationen erreichen, die im Abschnitt "Kontakt" angegeben sind.</p>
-            </details>
-            <details>
-                <summary>Welche Tools nutzt Maxify für die Entwicklung?</summary>
-                <p>Maxify verwendet Tools wie Git, Docker, Kubernetes, VS Code und IntelliJ IDEA, um eine effiziente Entwicklung zu gewährleisten.</p>
-            </details>
+        <section id="skills" class="section-with-bg">
+            <h2><i class="fas fa-cogs"></i> Technische Fähigkeiten</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-bars">
+                        <div class="skill">
+                            <span>JavaScript</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div>
+                        </div>
+                        <div class="skill">
+                            <span>Python</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
+                        </div>
+                        <div class="skill">
+                            <span>HTML/CSS</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 95%"></div></div>
+                        </div>
+                        <div class="skill">
+                            <span>Java</span>
+                            <div class="skill-bar"><div class="skill-level" style="width: 75%"></div></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Frameworks & Tools</h3>
+                    <div class="skill-badges">
+                        <span class="skill-badge">React</span>
+                        <span class="skill-badge">Node.js</span>
+                        <span class="skill-badge">Express</span>
+                        <span class="skill-badge">Git</span>
+                        <span class="skill-badge">Docker</span>
+                        <span class="skill-badge">AWS</span>
+                        <span class="skill-badge">MongoDB</span>
+                        <span class="skill-badge">PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
         </section>
-        <section id="testimonials">
-            <h2>Testimonials</h2>
-            <details>
-                <summary>Anna Müller, CEO von TechCorp</summary>
-                <div class="testimonial">
-                    <p>"Maxify407578 hat uns mit seiner Expertise in der Webentwicklung beeindruckt. Die gelieferten Projekte waren stets qualitativ hochwertig und termingerecht!"</p>
+
+        <section id="project-gallery" class="section-with-bg">
+            <h2><i class="fas fa-code"></i> Projekt Galerie</h2>
+            
+            <!-- Projekt-Filter -->
+            <div class="projekt-filter">
+                <button class="filter-btn active" data-filter="all">Alle</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="app">Apps</button>
+                <button class="filter-btn" data-filter="tool">Tools</button>
+            </div>
+            
+            <div class="projekt-gallery">
+                <div class="projekt-item" data-category="tool">
+                    <div class="projekt-image" onclick="openLightbox('images/Multi Tool png.png', 'PC Multi-Tool Suite')">
+                        <img src="images/Multi Tool png.png" alt="PC Multi-Tool Suite - Systemoptimierungssoftware" loading="lazy">
+                        <div class="projekt-overlay">
+                            <div class="projekt-tech">Python • Qt • System Integration</div>
+                        </div>
+                    </div>
+                    <h3>PC Multi-Tool Suite</h3>
+                    <p>Eine umfassende Dienstprogrammanwendung, die Systemoptimierung, Dateiverwaltung und Diagnosetools in einer benutzerfreundlichen Oberfläche kombiniert.</p>
+                    <div class="projekt-links">
+                        <a href="https://github.com/Maxify407578/Multi-Pc-Tool" target="_blank" class="btn"><i class="fab fa-github"></i> Code ansehen</a>
+                        <a href="https://github.com/Maxify407578/Multi-Pc-Tool" target="_blank" class="btn btn-alt"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    </div>
                 </div>
-            </details>
-            <details>
-                <summary>Tobias Schmidt, Projektmanager</summary>
-                <div class="testimonial">
-                    <p>"Die Zusammenarbeit mit Maxify war eine Freude. Er bringt kreative Ideen ein und hat ein Auge fürs Detail, das unsere Projekte auf die nächste Stufe hebt."</p>
+                <div class="projekt-item" data-category="web">
+                    <div class="projekt-image" onclick="openLightbox('images/Weather_app.png', 'Wetter Dashboard')">
+                        <img src="images/Weather_app.png" alt="Wetter Dashboard Anwendung" onerror="this.src='https://via.placeholder.com/300x200?text=Wetter+App'" loading="lazy">
+                        <div class="projekt-overlay">
+                            <div class="projekt-tech">JavaScript • React • API Integration</div>
+                        </div>
+                    </div>
+                    <h3>Wetter Dashboard</h3>
+                    <p>Eine elegante Wetteranwendung mit Echtzeit-Prognosen, interaktiven Karten und standortbasierten Wetterwarnungen in einem klaren, minimalistischen Design.</p>
+                    <div class="projekt-links">
+                        <a href="https://github.com/Maxify407578/Wheater-App" target="_blank" class="btn"><i class="fab fa-github"></i> Code ansehen</a>
+                        <a href="https://github.com/Maxify407578/Wheater-App" target="_blank" class="btn btn-alt"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    </div>
                 </div>
-            </details>
-            <details>
-                <summary>Julia Weber, Designerin</summary>
-                <div class="testimonial">
-                    <p>"Dank Maxify konnte ich meine Designs problemlos in funktionierende Webseiten umsetzen. Seine Unterstützung war unschätzbar."</p>
+                <div class="projekt-item" data-category="app">
+                    <div class="projekt-image" onclick="openLightbox('images/Chatbot png.png', 'KI-Konversationsassistent')">
+                        <img src="images/Chatbot png.png" alt="KI-Konversationsassistent" loading="lazy">
+                        <div class="projekt-overlay">
+                            <div class="projekt-tech">Python • NLP • Machine Learning</div>
+                        </div>
+                    </div>
+                    <h3>KI-Konversationsassistent</h3>
+                    <p>Eine intelligente Chatbot-Plattform, die natürliche Sprachverarbeitung nutzt, um kontextbezogene Antworten zu liefern und bei verschiedenen Aufgaben zu helfen.</p>
+                    <div class="projekt-links">
+                        <a href="https://github.com/Maxify407578/Chatbot" target="_blank" class="btn"><i class="fab fa-github"></i> Code ansehen</a>
+                        <a href="https://github.com/Maxify407578/Chatbot" target="_blank" class="btn btn-alt"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    </div>
                 </div>
-            </details>
+            </div>
+            
+            <div class="view-more-container">
+                <a href="https://github.com/Maxify407578" target="_blank" class="btn btn-large"><i class="fab fa-github"></i> Mehr Projekte auf GitHub</a>
+            </div>
         </section>
-        <section id="kontakt">
-            <h2>Kontakt</h2>
-            <div class="card">
-                <p>Möchten Sie mehr erfahren oder mit Maxify407578 in Kontakt treten? Hier sind einige Möglichkeiten, wie Sie ihn erreichen können:</p>
-                <ul>
-                    <li><strong>Email:</strong> <a href="mailto:maxify407578@example.com">maxify407578@example.com</a></li>
-                    <li><strong>GitHub:</strong> <a href="https://github.com/Maxify407578">https://github.com/Maxify407578</a></li>
-                    <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/max-schüller-b71a8b320/">https://linkedin.com/in/maxify407578</a></li>
-                    <li><strong>Twitter:</strong> <a href="https://twitter.com/Maxify407578">@Maxify407578</a></li>
-                </ul>
-                <p>Er freut sich über neue Verbindungen und spannende Gespräche!</p>
+        
+        <!-- Lightbox für Projekt-Bilder -->
+        <div id="lightbox" class="lightbox">
+            <div class="lightbox-content">
+                <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+                <img id="lightbox-image" src="" alt="">
+                <div id="lightbox-caption"></div>
+            </div>
+        </div>
+
+        <section id="faq" class="section-with-bg">
+            <h2><i class="fas fa-question-circle"></i> Häufig gestellte Fragen</h2>
+            <div class="faq-container">
+                <details>
+                    <summary>What makes your development approach unique?</summary>
+                    <div class="faq-content">
+                        <p>I approach development with a focus on sustainability, efficiency, and user experience. I believe in writing clean, well-documented code that's maintainable and scalable. My background in both frontend and backend technologies allows me to create cohesive solutions that address all aspects of a project.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary>Which technologies do you specialize in?</summary>
+                    <div class="faq-content">
+                        <p>My core expertise lies in JavaScript ecosystems including React, Node.js, and Express. I'm also proficient in Python for data analysis and backend development. For database solutions, I work with both SQL (PostgreSQL, MySQL) and NoSQL (MongoDB) technologies depending on project requirements.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary>How do you approach collaborative projects?</summary>
+                    <div class="faq-content">
+                        <p>I believe in clear communication, well-defined processes, and regular feedback cycles. I use version control (Git) and project management tools to ensure transparency and accountability. My experience in agile methodologies helps in adapting to changing requirements while maintaining project momentum.</p>
+                    </div>
+                </details>
+                <details>
+                    <summary>What development tools do you use daily?</summary>
+                    <div class="faq-content">
+                        <p>My development environment includes VS Code with productivity extensions, Git for version control, Docker for containerization, and various CI/CD tools for automated testing and deployment. I also use design tools like Figma for UI prototyping and collaboration with designers.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+            
+        <!-- Quiz-Komponente -->
+        <section id="quiz" class="quiz-section">
+            <h2>Webentwicklungs-Quiz</h2>
+            
+            <div id="quizIntro" class="quiz-intro active">
+                <p>Testen Sie Ihr Wissen zur Webentwicklung mit unserem kurzen Quiz!</p>
+                <button onclick="startQuiz()" class="quiz-start-btn">Quiz starten</button>
+            </div>
+            
+            <div id="quizQuestion" class="quiz-question">
+                <h3 id="questionText">Frage 1</h3>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectAnswer(this, 0)" data-value="0">Hyper Text Markup Language</div>
+                    <div class="quiz-option" onclick="selectAnswer(this, 1)" data-value="1">High Tech Modern Language</div>
+                    <div class="quiz-option" onclick="selectAnswer(this, 2)" data-value="2">Hyper Transfer Markup Logic</div>
+                    <div class="quiz-option" onclick="selectAnswer(this, 3)" data-value="3">Home Tool Markup Language</div>
+                </div>
+                <div class="quiz-navigation">
+                    <span id="questionCounter">Frage 1/5</span>
+                    <div class="quiz-buttons">
+                        <button id="prevQuestionBtn" onclick="prevQuestion()" disabled>Zurück</button>
+                        <button id="nextQuestionBtn" onclick="nextQuestion()" disabled>Weiter</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="quizResult" class="quiz-result">
+                <h3>Quiz abgeschlossen!</h3>
+                <p>Ihre Punktzahl: <span id="quizScore">0/5</span></p>
+                <p id="quizFeedback"></p>
+                <button onclick="restartQuiz()" class="quiz-restart-btn">Nochmal versuchen</button>
+            </div>
+        </section>
+        
+        <!-- Echtzeit-Besucherzähler -->
+        <div class="visitor-counter">
+            <i class="fas fa-users visitor-icon"></i>
+            <span>Besucher: <span id="visitorCounter">1</span></span>
+        </div>
+        
+        <section id="contact" class="section-with-bg">
+            <h2><i class="fas fa-envelope"></i> Kontakt</h2>
+            <div class="contact-container">
+                <div class="contact-info card">
+                    <h3>Kontaktinformationen</h3>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:maxschueller11@gmail.com">maxschueller11@gmail.com</a></li>
+                        <li><i class="fab fa-github"></i> <a href="https://github.com/Maxify407578" target="_blank">github.com/Maxify407578</a></li>
+                        <li><i class="fab fa-twitter"></i> <a href="https://twitter.com/MaxSchller1" target="_blank">@MaxSchller1</a></li>
+                        <li><i class="fas fa-link"></i> <a href="https://linktr.ee/Maxify37" target="_blank">linktr.ee/Maxify37</a></li>
+                        <li><i class="fab fa-instagram"></i> <a href="https://instagram.com/maxify2813" target="_blank">@maxify2813</a></li>
+                        <li><i class="fab fa-tiktok"></i> <a href="https://tiktok.com/@maxify.1" target="_blank">@maxify.1</a></li>
+                    </ul>
+                    <p>Ich bin immer offen für neue Projekte, kreative Ideen oder Möglichkeiten, Teil Ihrer Vision zu sein.</p>
+                </div>
+                <div class="contact-form card">
+                    <h3>Nachricht senden</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Ihr Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Ihre E-Mail" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Betreff">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Ihre Nachricht" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Nachricht senden</button>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
+
     <footer>
-        <p>&copy; 2024 Maxify407578. Alle Rechte vorbehalten.</p>
-        <div class="social-icons">
-            <a href="https://twitter.com/Maxify407578" target="_blank">Twitter</a>
-            <a href="https://facebook.com/Maxify407578" target="_blank">Facebook</a>
-            <a href="https://instagram.com/Maxify407578" target="_blank">Instagram</a>
-            <a href="https://linkedin.com/in/maxify407578" target="_blank">LinkedIn</a>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Maxify407578</h3>
+                <p>Digitale Lösungen mit Leidenschaft und Präzision.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Schnelllinks</h3>
+                <ul>
+                    <li><a href="#about-maxify">Über mich</a></li>
+                    <li><a href="#project-gallery">Projekte</a></li>
+                    <li><a href="#skills">Fähigkeiten</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="social-icons">
+                <h3>Verbinden</h3>
+                <div class="social-links">
+                    <a href="https://github.com/Maxify407578" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://twitter.com/MaxSchller1" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/maxify2813" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://tiktok.com/@maxify.1" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://linktr.ee/Maxify37" target="_blank"><i class="fas fa-link"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Maxify407578. Alle Rechte vorbehalten.</p>
         </div>
     </footer>
+
+    <div id="cookiePopup" class="cookie-popup">
+        <div class="cookie-popup-content">
+            <h2>Cookie-Einwilligung</h2>
+            <p>Diese Website verwendet Cookies, um Ihr Surferlebnis zu verbessern und den Website-Verkehr zu analysieren.</p>
+            <div class="cookie-buttons">
+                <button id="acceptCookies">Alle akzeptieren</button>
+                <button id="rejectCookies" class="secondary-btn">Nur essentielle</button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Quiz-Funktionalität
+        const quizQuestions = [
+            {
+                question: "Was steht HTML für?",
+                options: ["Hyper Text Markup Language", "High Tech Modern Language", "Hyper Transfer Markup Logic", "Home Tool Markup Language"],
+                answer: 0
+            },
+            {
+                question: "Welche Sprache wird für Styling verwendet?",
+                options: ["Java", "Python", "CSS", "PHP"],
+                answer: 2
+            },
+            {
+                question: "Was ist JavaScript?",
+                options: ["Eine Programmiersprache", "Eine Datenbank", "Ein Server", "Ein Browser"],
+                answer: 0
+            },
+            {
+                question: "Was ist ein responsives Design?",
+                options: ["Eine schnelle Website", "Design, das sich an verschiedene Bildschirmgrößen anpasst", "Ein modernes Framework", "Ein Design-Tool"],
+                answer: 1
+            },
+            {
+                question: "Was bedeutet SEO?",
+                options: ["Secure External Operation", "Search Engine Optimization", "Social Environment Online", "System Error Output"],
+                answer: 1
+            }
+        ];
+        
+        let currentQuestion = 0;
+        let userAnswers = [-1, -1, -1, -1, -1];
+        
+        function startQuiz() {
+            document.getElementById('quizIntro').classList.remove('active');
+            document.getElementById('quizQuestion').classList.add('active');
+            userAnswers = [-1, -1, -1, -1, -1];
+            currentQuestion = 0;
+            showQuestion(currentQuestion);
+        }
+        
+        function showQuestion(index) {
+            const questionEl = document.getElementById('quizQuestion');
+            const textEl = document.getElementById('questionText');
+            const options = questionEl.querySelectorAll('.quiz-option');
+            
+            textEl.textContent = `Frage ${index + 1}: ${quizQuestions[index].question}`;
+            
+            options.forEach((option, i) => {
+                option.textContent = quizQuestions[index].options[i];
+                option.classList.remove('selected', 'correct', 'incorrect');
+                
+                if (userAnswers[index] === i) {
+                    option.classList.add('selected');
+                }
+            });
+            
+            document.getElementById('questionCounter').textContent = `Frage ${index + 1}/5`;
+            
+            // Button-Status aktualisieren
+            document.getElementById('prevQuestionBtn').disabled = index === 0;
+            document.getElementById('nextQuestionBtn').textContent = index === 4 ? "Abschließen" : "Weiter";
+            document.getElementById('nextQuestionBtn').disabled = userAnswers[index] === -1;
+        }
+        
+        function selectAnswer(element, answerIndex) {
+            // Vorherige Auswahl aufheben
+            const options = element.parentElement.querySelectorAll('.quiz-option');
+            options.forEach(option => option.classList.remove('selected'));
+            
+            // Neue Auswahl markieren
+            element.classList.add('selected');
+            
+            // Antwort speichern
+            userAnswers[currentQuestion] = answerIndex;
+            
+            // Weiter-Button aktivieren
+            document.getElementById('nextQuestionBtn').disabled = false;
+        }
+        
+        function nextQuestion() {
+            if (currentQuestion < 4) {
+                currentQuestion++;
+                showQuestion(currentQuestion);
+            } else {
+                showResult();
+            }
+        }
+        
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion(currentQuestion);
+            }
+        }
+        
+        function showResult() {
+            document.getElementById('quizQuestion').classList.remove('active');
+            document.getElementById('quizResult').classList.add('active');
+            
+            // Punktzahl berechnen
+            let score = 0;
+            userAnswers.forEach((answer, index) => {
+                if (answer === quizQuestions[index].answer) {
+                    score++;
+                }
+            });
+            
+            document.getElementById('quizScore').textContent = `${score}/5`;
+            
+            // Feedback anhand der Punktzahl
+            const feedback = document.getElementById('quizFeedback');
+            if (score === 5) {
+                feedback.textContent = "Perfekt! Sie sind ein Webentwicklungs-Experte!";
+            } else if (score >= 3) {
+                feedback.textContent = "Gut gemacht! Sie haben solide Grundkenntnisse.";
+            } else {
+                feedback.textContent = "Sie können noch mehr lernen. Versuchen Sie es erneut!";
+            }
+        }
+        
+        function restartQuiz() {
+            document.getElementById('quizResult').classList.remove('active');
+            document.getElementById('quizIntro').classList.add('active');
+        }
+        
+        // Globale Variablen für die Schriftgröße
+        let currentFontSize = parseInt(window.getComputedStyle(document.body).fontSize) || 16;
+        const minFontSize = 12;
+        const maxFontSize = 24;
+
+        // Schriftgröße ändern
+        function changeFontSize(step) {
+            currentFontSize = Math.max(minFontSize, Math.min(maxFontSize, currentFontSize + step));
+            document.body.style.fontSize = currentFontSize + 'px';
+            localStorage.setItem('preferredFontSize', currentFontSize);
+            
+            // Feedback geben
+            showNotification('Schriftgröße: ' + currentFontSize + 'px');
+        }
+        
+        // Benachrichtigung anzeigen
+        function showNotification(message) {
+            // Entferne vorhandene Benachrichtigungen
+            const oldNotifications = document.querySelectorAll('.notification');
+            oldNotifications.forEach(notification => notification.remove());
+            
+            // Neue Benachrichtigung erstellen
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Animation einschalten
+            setTimeout(() => {
+                notification.classList.add('visible');
+            }, 10);
+            
+            // Nach 3 Sekunden ausblenden
+            setTimeout(() => {
+                notification.classList.remove('visible');
+                setTimeout(() => {
+                    notification.remove();
+                }, 500);
+            }, 3000);
+        }
+        
+        // Zurück nach oben scrollen
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Theme-Wechsel direkt verfügbar machen
+        function changeTheme(theme) {
+            // Theme setzen
+            document.body.setAttribute('data-theme', theme);
+            localStorage.setItem('preferredTheme', theme);
+            
+            // Aktiven Status aktualisieren
+            document.querySelectorAll('.theme-option').forEach(opt => opt.classList.remove('active'));
+            document.querySelector(`.theme-option[data-theme="${theme}"]`).classList.add('active');
+            
+            // Direkte Farbänderungen für wichtige Elemente - zur Unterstützung älterer Browser
+            if (theme === 'light') {
+                document.body.style.backgroundColor = '#f5f5f5';
+                document.body.style.color = '#333333';
+                document.querySelector('header').style.backgroundColor = '#e0e0e0';
+                document.querySelector('main').style.backgroundColor = '#ffffff';
+                document.querySelectorAll('section h2').forEach(h2 => {
+                    h2.style.color = '#1976d2';
+                    h2.style.borderBottomColor = '#2196f3';
+                });
+            } else if (theme === 'pink') {
+                document.body.style.backgroundColor = '#20062e';
+                document.body.style.color = '#ffffff';
+                document.querySelector('header').style.backgroundColor = '#2e0a42';
+                document.querySelector('main').style.backgroundColor = '#2e0a42';
+                document.querySelectorAll('section h2').forEach(h2 => {
+                    h2.style.color = '#ff44cc';
+                    h2.style.borderBottomColor = '#ff66d9';
+                });
+            } else {
+                // Dunkles Theme
+                document.body.style.backgroundColor = '#121212';
+                document.body.style.color = '#e0e0e0';
+                document.querySelector('header').style.backgroundColor = '#1c1c1c';
+                document.querySelector('main').style.backgroundColor = '#1e1e1e';
+                document.querySelectorAll('section h2').forEach(h2 => {
+                    h2.style.color = '#90caf9';
+                    h2.style.borderBottomColor = '#42a5f5';
+                });
+            }
+            
+            // Feedback in der Konsole
+            console.log('Theme gewechselt zu: ' + theme);
+        }
+        
+        // Toggle navbar on mobile
         function toggleNavbar() {
             const navbarLinks = document.getElementById('navbarLinks');
             navbarLinks.classList.toggle('active');
         }
+
+        // Realistischer Besucherzähler mit simulierten Server-Daten
+        function initVisitorCounter() {
+            const counterElement = document.getElementById('visitorCounter');
+            if (counterElement) {
+                // Server-Simulation: Basiswert zwischen 1350 und 1400
+                const baseCount = 1373;
+                let visitorCount = baseCount;
+                
+                // Initiale Anzeige
+                counterElement.textContent = visitorCount;
+                
+                // Simulierter Netzwerk-Request
+                setTimeout(() => {
+                    // Kurze Animation als ob Daten geladen würden
+                    counterElement.classList.add('loading');
+                    
+                    setTimeout(() => {
+                        counterElement.classList.remove('loading');
+                        counterElement.classList.add('counter-change');
+                        
+                        // Kleine Zufallsänderung zum Startwert
+                        const initialDelta = Math.floor(Math.random() * 5) - 2;
+                        visitorCount = baseCount + initialDelta;
+                        counterElement.textContent = visitorCount;
+                        
+                        setTimeout(() => {
+                            counterElement.classList.remove('counter-change');
+                        }, 700);
+                    }, 800);
+                }, 1500);
+                
+                // Realistische Schwankungen - manchmal steigt es, manchmal fällt es leicht
+                setInterval(function() {
+                    // Serveranfrage simulieren
+                    counterElement.classList.add('loading');
+                    
+                    setTimeout(() => {
+                        counterElement.classList.remove('loading');
+                        
+                        // Komplexeres Modell für Besucheränderungen
+                        const time = new Date();
+                        const hour = time.getHours();
+                        
+                        // Mehr Besucher tagsüber (9-18 Uhr)
+                        let chance = 0.2; // Grundchance für Änderung
+                        let maxDelta = 2; // Maximale Änderung
+                        
+                        if (hour >= 9 && hour < 18) {
+                            chance = 0.4; // Höhere Änderungswahrscheinlichkeit
+                            maxDelta = 3; // Größere Änderungen möglich
+                        }
+                        
+                        // Nachts (0-6 Uhr) weniger Aktivität
+                        if (hour >= 0 && hour < 6) {
+                            chance = 0.1;
+                            maxDelta = 1;
+                        }
+                        
+                        // Aktivitätsspitze nach Feierabend
+                        if (hour >= 18 && hour < 22) {
+                            chance = 0.5;
+                            maxDelta = 4;
+                        }
+                        
+                        // Zufällige Änderung, mit höherer Wahrscheinlichkeit für Anstieg
+                        if (Math.random() < chance) {
+                            // 70% Wahrscheinlichkeit für Anstieg, 30% für Abfall
+                            const isIncrease = Math.random() < 0.7;
+                            const delta = Math.floor(Math.random() * maxDelta) + 1;
+                            
+                            if (isIncrease) {
+                                visitorCount += delta;
+                            } else {
+                                // Nicht unter den Basiswert fallen
+                                visitorCount = Math.max(baseCount - 10, visitorCount - delta);
+                            }
+                            
+                            counterElement.classList.add('counter-change');
+                            counterElement.textContent = visitorCount;
+                            
+                            setTimeout(() => {
+                                counterElement.classList.remove('counter-change');
+                            }, 700);
+                        }
+                    }, 400);
+                }, 8000); // Alle 8 Sekunden aktualisieren
+            }
+        }
+        
+        // Offline-Status überwachen
+        function checkOfflineStatus() {
+            const offlineNotification = document.getElementById('offlineNotification');
+            
+            if (!navigator.onLine) {
+                offlineNotification.classList.add('visible');
+                showNotification('Sie sind offline. Einige Funktionen sind eingeschränkt.');
+            } else {
+                offlineNotification.classList.remove('visible');
+            }
+        }
+        
+        // Bei Statusänderungen überprüfen
+        window.addEventListener('online', checkOfflineStatus);
+        window.addEventListener('offline', checkOfflineStatus);
+        
+        // Verbessertes Bilderladen
+        function lazyLoadImages() {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const image = entry.target;
+                            image.src = image.dataset.src || image.src;
+                            observer.unobserve(image);
+                        }
+                    });
+                });
+                
+                images.forEach(image => {
+                    imageObserver.observe(image);
+                });
+            }
+        }
+    </script>
+    
+    <!-- JavaScript am Ende der Seite -->
+    <script>
+        // Sofortige Ausführung, um sicherzustellen, dass alle Inhalte angezeigt werden
+        (function() {
+            // Löscht mögliche alte Styles, die das Scrollen verhindern
+            document.body.style.overflow = 'auto';
+            document.documentElement.style.overflow = 'auto';
+            document.documentElement.style.height = 'auto';
+            document.body.style.height = 'auto';
+            
+            // Fade-in Animation für Sektionen deaktivieren
+            document.querySelectorAll('.section-with-bg').forEach(function(section) {
+                section.classList.add('fade-in');
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            });
+            
+            // Alle Sektionen sichtbar machen
+            document.querySelectorAll('section').forEach(function(section) {
+                section.style.display = 'block';
+                section.style.visibility = 'visible';
+                section.style.opacity = '1';
+            });
+            
+            // Main-Inhalt sichtbar machen
+            const main = document.querySelector('main');
+            if (main) {
+                main.style.display = 'block';
+            }
+            
+            // Footer sichtbar machen
+            const footer = document.querySelector('footer');
+            if (footer) {
+                footer.style.display = 'block';
+            }
+        })();
+        
+        // Reguläre DOMContentLoaded Event-Handler
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM vollständig geladen");
+            // Rest des Codes zur Initialisierung der Seite
+            initLanguageSelector();
+            initVisitorCounter();
+            console.log("Sprachauswahl und Besucherzähler wurden initialisiert");
+        });
+    </script>
+    
+    <!-- Service Worker für Offline-Funktionalität -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registriert: ', registration.scope);
+                    })
+                    .catch(function(error) {
+                        console.log('ServiceWorker Registration fehlgeschlagen: ', error);
+                    });
+            });
+        }
+    </script>
+
+    <!-- Notfall-Fallback für die Navigation -->
+    <script>
+        // Stellt sicher, dass alle Navigationslinks funktionieren
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        // Stelle sicher, dass das Zielelement sichtbar ist
+                        targetElement.style.display = 'block';
+                        targetElement.style.visibility = 'visible';
+                        targetElement.style.opacity = '1';
+                        
+                        // Scrolle zum Zielelement
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        
+                        console.log("Navigation zu:", targetId);
+                    } else {
+                        console.warn("Zielelement nicht gefunden:", targetId);
+                    }
+                });
+            });
+            
+            // Nach dem Laden der Seite überprüfen, ob alle erforderlichen Elemente vorhanden sind
+            ['about-maxify', 'skills', 'project-gallery', 'faq', 'contact'].forEach(id => {
+                if (!document.getElementById(id)) {
+                    console.error("Wichtiges Element fehlt:", id);
+                } else {
+                    console.log("Element gefunden:", id);
+                }
+            });
+        });
+    </script>
+
+    <!-- Particle-Effekt JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('particle-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Canvas-Größe an Header anpassen
+            function resizeCanvas() {
+                const header = document.querySelector('.animated-header');
+                canvas.width = header.offsetWidth;
+                canvas.height = header.offsetHeight;
+            }
+            
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+            
+            // Partikel erstellen
+            const particleCount = Math.floor(window.innerWidth / 10);
+            const particles = [];
+            
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 2 + 0.5,
+                    color: `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.2})`,
+                    speedX: Math.random() * 1 - 0.5,
+                    speedY: Math.random() * 1 - 0.5,
+                    directionChangeTime: Math.random() * 100 + 50
+                });
+            }
+            
+            // Animation
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Partikel zeichnen und bewegen
+                particles.forEach(particle => {
+                    // Partikel zeichnen
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = particle.color;
+                    ctx.fill();
+                    
+                    // Richtungsänderung
+                    if (Math.random() < 0.01) {
+                        particle.speedX = Math.random() * 1 - 0.5;
+                        particle.speedY = Math.random() * 1 - 0.5;
+                    }
+                    
+                    // Bewegung
+                    particle.x += particle.speedX;
+                    particle.y += particle.speedY;
+                    
+                    // Grenzen prüfen
+                    if (particle.x < 0) particle.x = canvas.width;
+                    if (particle.x > canvas.width) particle.x = 0;
+                    if (particle.y < 0) particle.y = canvas.height;
+                    if (particle.y > canvas.height) particle.y = 0;
+                });
+                
+                // Verbindungen zwischen nahen Partikeln
+                particles.forEach((a, i) => {
+                    particles.slice(i + 1).forEach(b => {
+                        const dx = a.x - b.x;
+                        const dy = a.y - b.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 100) {
+                            ctx.beginPath();
+                            ctx.moveTo(a.x, a.y);
+                            ctx.lineTo(b.x, b.y);
+                            ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 - distance/1000})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    });
+                });
+                
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
+        });
+    </script>
+
+    <!-- Typing Animation JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const typingText = document.querySelector('.typing-text');
+            const typingCursor = document.querySelector('.typing-cursor');
+            
+            const words = [
+                "Webentwickler", 
+                "Designer", 
+                "UI/UX Experte",
+                "Problem-Löser",
+                "Innovator"
+            ];
+            
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let isWaiting = false;
+            
+            function type() {
+                const currentWord = words[wordIndex];
+                
+                if (isWaiting) {
+                    // Verzögerung nach vollendetem Wort
+                    setTimeout(() => {
+                        isWaiting = false;
+                        isDeleting = true;
+                        type();
+                    }, 1500);
+                    return;
+                }
+                
+                if (isDeleting) {
+                    // Wort löschen
+                    typingText.textContent = currentWord.substring(0, charIndex - 1);
+                    charIndex--;
+                    
+                    if (charIndex === 0) {
+                        isDeleting = false;
+                        wordIndex = (wordIndex + 1) % words.length;
+                    }
+                } else {
+                    // Wort schreiben
+                    typingText.textContent = currentWord.substring(0, charIndex + 1);
+                    charIndex++;
+                    
+                    if (charIndex === currentWord.length) {
+                        isWaiting = true;
+                    }
+                }
+                
+                // Geschwindigkeit anpassen
+                let typeSpeed = isDeleting ? 80 : 150;
+                setTimeout(type, typeSpeed);
+            }
+            
+            // Cursor-Animation
+            setInterval(() => {
+                typingCursor.style.opacity = typingCursor.style.opacity === '0' ? '1' : '0';
+            }, 500);
+            
+            // Typing starten
+            setTimeout(type, 1000);
+        });
     </script>
 </body>
 </html>

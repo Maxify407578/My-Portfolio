@@ -1,0 +1,47 @@
+{
+  "name": "Maxify Portfolio",
+  "short_name": "Portfolio",
+  "description": "Professionelles Portfolio von Maxify407578 - Webentwickler und Softwareentwickler",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#121212",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Projekte",
+      "url": "/index.html#project-gallery",
+      "description": "Meine Projektgalerie anzeigen"
+    },
+    {
+      "name": "Kontakt",
+      "url": "/index.html#contact",
+      "description": "Kontaktformular öffnen"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "images/screenshot1.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "platform": "wide",
+      "label": "Startseite des Portfolios"
+    }
+  ],
+  "categories": ["portfolio", "web development", "software"],
+  "lang": "de"
+} 
