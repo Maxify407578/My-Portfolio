@@ -18,747 +18,13 @@
     
     <!-- Animation-Bibliothek -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <style>
-        /* Allgemeine Stile */
-        :root {
-            --primary-color: #4a90e2;
-            --secondary-color: #50c878;
-            --dark-bg: #2a2a2a;
-            --light-bg: #f5f5f5;
-            --text-dark: #333;
-            --text-light: #f5f5f5;
-            --border-radius: 8px;
-            --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-            --spacing: 20px;
-            --anim-speed: 0.3s;
-        }
-        
-        /* High Contrast Mode */
-        [data-highcontrast="true"] {
-            --primary-color: #ffff00;
-            --secondary-color: #00ff00;
-            --dark-bg: #000000;
-            --light-bg: #ffffff;
-            --text-dark: #000000;
-            --text-light: #ffffff;
-            --box-shadow: 0 0 0 2px #ffffff;
-        }
-        
-        /* Dyslexic Font Mode */
-        [data-dyslexic="true"] {
-            font-family: 'OpenDyslexic', Arial, sans-serif;
-        }
-        
-        /* Reduced Animations Mode */
-        [data-reduced-animations="true"] * {
-            animation-duration: 0.001s !important;
-            transition-duration: 0.001s !important;
-        }
-        
-        /* Theme Modes */
-        [data-theme="light"] {
-            --bg-color: var(--light-bg);
-            --text-color: var(--text-dark);
-        }
-        
-        [data-theme="dark"] {
-            --bg-color: var(--dark-bg);
-            --text-color: var(--text-light);
-        }
-        
-        /* Allgemeine Styles */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            background: #121212;
-            color: #e0e0e0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-        }
-
-        header {
-            background-color: #1c1c1c;
-            padding: 20px;
-            text-align: center;
-            z-index: 2;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin: 0;
-            color: #e0e0e0;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            color: #e0e0e0;
-        }
-
-        /* Navbar Styles */
-        .navbar {
-            background-color: #333;
-            padding: 10px;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-        }
-
-        .navbar-toggle {
-            display: none;
-            font-size: 30px;
-            cursor: pointer;
-        }
-
-        .navbar-links {
-            display: flex;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            justify-content: center;
-        }
-
-        .navbar-links li {
-            margin-right: 20px;
-        }
-
-        .navbar-links li a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .navbar-links li a:hover {
-            color: #ddd;
-        }
-
-        /* Farbiger Bereich Styles */
-        .colored-section {
-            background-color: #1a1a1a;
-            padding: 50px;
-            text-align: center;
-            color: #e0e0e0;
-        }
-
-        /* Media Queries für Navbar */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-            }
-            
-            .navbar-links {
-                display: none;
-                width: 100%;
-            }
-
-            .navbar-links.active {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .navbar-toggle {
-                display: block;
-                align-self: flex-end;
-                padding: 10px;
-            }
-
-            .navbar-links li {
-                margin: 10px 0;
-            }
-        }
-
-        /* Navigation */
-        nav {
-            background: #1f1f1f;
-            color: #e0e0e0;
-            padding: 1rem;
-            text-align: center;
-            z-index: 100;
-        }
-
-        nav a {
-            color: #90caf9;
-            margin: 0 1rem;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        nav a:hover {
-            color: #e0e0e0;
-            transform: scale(1.1);
-        }
-
-        /* Hauptbereich */
-        main {
-            flex: 1;
-            padding: 3rem 2rem;
-            max-width: 900px;
-            margin: 0 auto;
-            background: #1e1e1e;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-            position: relative;
-            z-index: 1;
-        }
-
-        section {
-            margin-bottom: 2rem;
-        }
-
-        section h2 {
-            color: #90caf9;
-            font-size: 1.8rem;
-            border-bottom: 2px solid #64b5f6;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        section p {
-            font-size: 1rem;
-            line-height: 1.8;
-        }
-
-        section a {
-            color: #64b5f6;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        section a:hover {
-            text-decoration: underline;
-            color: #e0e0e0;
-        }
-
-        ul {
-            list-style-type: square;
-            padding-left: 1.5rem;
-        }
-
-        /* Footer Styles */
-        footer {
-            background: #333;
-            color: #e0e0e0;
-            text-align: center;
-            padding: 1rem 0;
-            font-size: 0.9rem;
-            z-index: 2;
-        }
-
-        footer .social-icons {
-            margin-top: 1rem;
-        }
-
-        footer .social-icons a {
-            margin: 0 0.5rem;
-            color: #90caf9;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-
-        footer .social-icons a:hover {
-            color: #e0e0e0;
-        }
-
-        /* Karte Styles */
-        .card {
-            background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
-            box-shadow: 10px 10px 20px #0d0d0d, -10px -10px 20px #2f2f2f;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            transform: perspective(1000px) rotateY(0deg);
-            transition: transform 0.6s ease;
-        }
-
-        .card:hover {
-            transform: perspective(1000px) rotateY(10deg);
-        }
-
-        /* Button Styles */
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            margin-top: 20px;
-            border-radius: 8px;
-            background: linear-gradient(145deg, #90caf9, #42a5f5);
-            box-shadow: 5px 5px 10px #0d47a1, -5px -5px 10px #64b5f6;
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            box-shadow: 5px 5px 10px #64b5f6, -5px -5px 10px #0d47a1;
-            transform: scale(1.1);
-        }
-
-        /* Details Styles */
-        details {
-            background: #2e2e2e;
-            margin: 1rem 0;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-        }
-
-        details summary {
-            cursor: pointer;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #90caf9;
-        }
-
-        details summary:hover {
-            color: #e0e0e0;
-        }
-
-        details p {
-            margin-top: 0.5rem;
-            line-height: 1.6;
-        }
-
-        /* Testimonial Styles */
-        .testimonial {
-            background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .testimonial:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.9);
-        }
-
-        .testimonial p {
-            font-style: italic;
-            color: #bdbdbd;
-            margin-bottom: 0.8rem;
-        }
-
-        .testimonial .author {
-            text-align: right;
-            font-weight: bold;
-            color: #90caf9;
-        }
-
-        /* Gallery Styles */
-        #projekt-galerie {
-            margin-bottom: 2rem;
-        }
-
-        .projekt-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .projekt-item {
-            background: #2e2e2e;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .projekt-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.9);
-        }
-
-        .projekt-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-
-        .projekt-item h3 {
-            font-size: 1.4rem;
-            color: #90caf9;
-            margin-bottom: 1rem;
-        }
-
-        .projekt-item p {
-            font-size: 1rem;
-            color: #e0e0e0;
-            margin-bottom: 1rem;
-        }
-
-        .projekt-item a {
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 8px;
-            background: linear-gradient(145deg, #90caf9, #42a5f5);
-            box-shadow: 5px 5px 10px #0d47a1, -5px -5px 10px #64b5f6;
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .projekt-item a:hover {
-            box-shadow: 5px 5px 10px #64b5f6, -5px -5px 10px #0d47a1;
-            transform: scale(1.1);
-        }
-
-        /* Add a "Featured" badge for highlighted projects */
-        .projekt-item.featured::before {
-            content: "Featured";
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: linear-gradient(45deg, #ff4088, #fc67fa);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            z-index: 10;
-        }
-
-        /* Add styles for project images when missing */
-        .projekt-image img[src$="placeholder.com"] {
-            object-fit: cover;
-            background-color: #2a2a2a;
-        }
-
-        /* Improve loading/fade-in animation for project items */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Offline-Benachrichtigung Stylesheet */
-        .offline-notification {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #ff3d00;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            z-index: 9999;
-            display: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-        
-        .offline-notification.visible {
-            display: block;
-            animation: slideUp 0.3s forwards;
-        }
-        
-        @keyframes slideUp {
-            from {
-                transform: translate(-50%, 100%);
-                opacity: 0;
-            }
-            to {
-                transform: translate(-50%, 0);
-                opacity: 1;
-            }
-        }
-
-        /* Quiz Sektion */
-        .quiz-section {
-            padding: 2rem;
-            background-color: rgba(0, 0, 0, 0.05);
-            border-radius: var(--border-radius);
-            margin: 2rem 0;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .quiz-intro, .quiz-question, .quiz-result {
-            display: none;
-            text-align: center;
-        }
-
-        .quiz-intro.active, .quiz-question.active, .quiz-result.active {
-            display: block;
-        }
-
-        .quiz-start-btn, .quiz-restart-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            cursor: pointer;
-            margin-top: 1rem;
-            transition: var(--transition);
-        }
-
-        .quiz-start-btn:hover, .quiz-restart-btn:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .quiz-options {
-            margin: 1.5rem 0;
-        }
-
-        .quiz-option {
-            background-color: rgba(74, 144, 226, 0.1);
-            border: 2px solid transparent;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .quiz-option:hover {
-            background-color: rgba(74, 144, 226, 0.2);
-        }
-
-        .quiz-option.selected {
-            border-color: var(--primary-color);
-            background-color: rgba(74, 144, 226, 0.3);
-        }
-
-        .quiz-option.correct {
-            border-color: #4CAF50;
-            background-color: rgba(76, 175, 80, 0.2);
-        }
-
-        .quiz-option.incorrect {
-            border-color: #F44336;
-            background-color: rgba(244, 67, 54, 0.2);
-        }
-
-        .quiz-navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1.5rem;
-        }
-
-        .quiz-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .quiz-navigation button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .quiz-navigation button:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .quiz-navigation button:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
-        }
-
-        /* Besucherzähler */
-        .visitor-counter {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: rgba(0, 0, 0, 0.05);
-            padding: 10px 20px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            margin: 1rem auto;
-            width: fit-content;
-        }
-
-        .counter {
-            font-weight: bold;
-            color: var(--primary-color);
-            font-size: 1.2rem;
-        }
-
-        /* Canvas Hintergrund */
-        #backgroundCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* Offline-Benachrichtigung */
-        .offline-notification {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #f44336;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            z-index: 1000;
-            display: none;
-        }
-
-        /* Barrierefreiheits-Panel */
-        .accessibility-panel {
-            position: fixed;
-            right: -300px;
-            top: 0;
-            width: 250px;
-            height: 100%;
-            background-color: var(--bg-color);
-            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            z-index: 100;
-            transition: right 0.3s ease;
-            overflow-y: auto;
-        }
-
-        .accessibility-panel.open {
-            right: 0;
-        }
-
-        .accessibility-toggle {
-            position: fixed;
-            right: 20px;
-            bottom: 80px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 101;
-            box-shadow: var(--box-shadow);
-        }
-
-        .accessibility-toggle svg {
-            fill: white;
-        }
-
-        .accessibility-option {
-            margin: 15px 0;
-        }
-
-        .accessibility-option button {
-            width: 100%;
-            padding: 10px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .accessibility-option button:hover {
-            background-color: var(--secondary-color);
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            box-shadow: var(--box-shadow);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-        }
-
-        .back-to-top svg {
-            fill: white;
-        }
-
-        /* Sprachauswahl */
-        .language-panel {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 90;
-            display: flex;
-            gap: 5px;
-        }
-
-        .language-option {
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            border: none;
-            padding: 5px 10px;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .language-option.active {
-            background-color: var(--primary-color);
-        }
-
-        .language-option:hover:not(.active) {
-            background-color: rgba(74, 144, 226, 0.7);
-        }
-    </style>
 </head>
 <body data-theme="dark">
     <!-- Canvas Hintergrund -->
     <canvas id="backgroundCanvas"></canvas>
     
     <!-- Offline-Benachrichtigung -->
-    <div id="offlineNotification" class="offline-notification">
-        <span>Sie sind offline. Einige Funktionen sind eingeschränkt.</span>
-    </div>
-    
-    <!-- Barrierefreiheits-Panel und Button entfernen -->
-    
-
-    
+   
     <!-- Zurück nach oben Button -->
     <button id="backToTop" onclick="scrollToTop()" class="back-to-top">
         <svg width="24" height="24" viewBox="0 0 24 24">
@@ -786,45 +52,15 @@
         </div>
     </header>
     
-    <!-- Theme Switcher -->
-    <div class="theme-switcher">
-        <div class="theme-option theme-dark" data-theme="dark" title="Dunkles Theme" onclick="changeTheme('dark')">
-            <i class="fas fa-moon"></i>
-        </div>
-        <div class="theme-option theme-light" data-theme="light" title="Helles Theme" onclick="changeTheme('light')">
-            <i class="fas fa-sun"></i>
-        </div>
-        <div class="theme-option theme-pink" data-theme="pink" title="Pink Theme" onclick="changeTheme('pink')">
-            <i class="fas fa-heart"></i>
-        </div>
-    </div>
-    
-    <!-- Utilities Panel -->
-    <div class="utilities-panel">
-        <div class="utility-option" title="Seite drucken" onclick="window.print()">
-            <i class="fas fa-print"></i>
-        </div>
-        <div class="utility-option" title="Schrift vergrößern" onclick="changeFontSize(1)">
-            <i class="fas fa-text-height"></i>
-        </div>
-        <div class="utility-option" title="Schrift verkleinern" onclick="changeFontSize(-1)">
-            <i class="fas fa-text-width"></i>
-        </div>
-        <div class="utility-option" title="Teilen" onclick="sharePortfolio()">
-            <i class="fas fa-share-alt"></i>
-        </div>
-    </div>
-    
     <nav class="navbar">
         <div class="navbar-container">
-            <div class="logo">MAXIFY</div>
+            <div class="logo">Portfolio</div>
             <div class="navbar-toggle" onclick="toggleNavbar()">☰</div>
             <ul class="navbar-links" id="navbarLinks">
                 <li><a href="#"><i class="fas fa-home"></i> Startseite</a></li>
                 <li><a href="#about-maxify"><i class="fas fa-user"></i> Über mich</a></li>
                 <li><a href="#project-gallery"><i class="fas fa-code"></i> Projekte</a></li>
-                <li><a href="#skills"><i class="fas fa-cogs"></i> Fähigkeiten</a></li>
-                <li><a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                <li><a href="#Areas of Expertise"><i class="fas fa-cogs"></i> Fähigkeiten</a></li>
                 <li><a href="#contact"><i class="fas fa-envelope"></i> Kontakt</a></li>
             </ul>
         </div>
@@ -838,7 +74,7 @@
                     <div class="profile-container">
                         <div class="profile-image">
                             <div class="image-wrapper">
-                                <img src="WhatsApp Image 2025-04-21 at 22.11.43_642b9cef.jpg" alt="Maxify Profile Picture" onerror="this.src='https://via.placeholder.com/150'">
+                                <img src="Bilder/Profil Bild.jpeg" alt="Profilbild" class="profile-pic" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
                                 <div class="profile-badge">
                                     <i class="fas fa-check"></i>
                                 </div>
@@ -853,12 +89,23 @@
                                     <a href="https://linktr.ee/Maxify37" target="_blank" class="social-icon"><i class="fas fa-link"></i></a>
                                 </div>
                             </div>
-                            <p>Hello, I'm a passionate full-stack developer with expertise in creating modern web applications. With a focus on clean code and intuitive user interfaces, I strive to develop solutions that make a difference.</p>
-                            <p>My journey in technology began 5 years ago, and I've been constantly learning and evolving ever since. I believe in the power of technology to transform businesses and enhance user experiences.</p>
-                            
+                            <div class="header-content">
+                                <div class="terminal-box">
+                                    <div class="terminal-bar">
+                                        <span class="dot red"></span>
+                                        <span class="dot yellow"></span>
+                                        <span class="dot green"></span>
+                                        <span class="terminal-title">max@portfolio:~$</span>
+                                    </div>
+                                    <div class="terminal-text">
+                                        <h1>über mich</h1>
+                                        <span>Willkommen auf meinem Coding-Portfolio!</span><br>
+                                        <span>Schau dich um und entdecke<br>meine Projekte und Skills.</span>
+                                    </div>
+                                </div>
                             <div class="stats-container">
                                 <div class="stat-item">
-                                    <div class="stat-value">5+</div>
+                                    <div class="stat-value">3+</div>
                                     <div class="stat-label">Jahre Erfahrung</div>
                                 </div>
                                 <div class="stat-item">
@@ -882,43 +129,44 @@
                         <div class="skill">
                             <div class="skill-info">
                                 <span>JavaScript</span>
-                                <span>90%</span>
+                                <span>100%</span>
                             </div>
-                            <div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div>
+                            <div class="skill-bar"><div class="skill-level" style="width: 100%"></div></div>
                         </div>
                         <div class="skill">
                             <div class="skill-info">
                                 <span>Python</span>
-                                <span>85%</span>
+                                <span>100%</span>
                             </div>
-                            <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
+                            <div class="skill-bar"><div class="skill-level" style="width: 100%"></div></div>
                         </div>
                         <div class="skill">
                             <div class="skill-info">
                                 <span>HTML/CSS</span>
-                                <span>95%</span>
+                                <span>100%</span>
                             </div>
-                            <div class="skill-bar"><div class="skill-level" style="width: 95%"></div></div>
+                            <div class="skill-bar"><div class="skill-level" style="width: 100%"></div></div>
                         </div>
                         <div class="skill">
                             <div class="skill-info">
                                 <span>Java</span>
-                                <span>75%</span>
+                                <span>100%</span>
                             </div>
-                            <div class="skill-bar"><div class="skill-level" style="width: 75%"></div></div>
+                            <div class="skill-bar"><div class="skill-level" style="width: 100%"></div></div>
                         </div>
                         <div class="skill">
                             <div class="skill-info">
                                 <span>React</span>
-                                <span>85%</span>
+                                <span>100%</span>
                             </div>
-                            <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
+                            <div class="skill-bar"><div class="skill-level" style="width: 100%"></div></div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="interests card">
+            <div id="Areas of Expertise" class="interests card">
+                
                 <h3>Areas of Expertise:</h3>
                 <div class="interests-grid">
                     <div class="interest-item">
@@ -957,106 +205,94 @@
             </div>
         </section>
 
-        <section id="skills" class="section-with-bg">
-            <h2><i class="fas fa-cogs"></i> Technische Fähigkeiten</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-bars">
-                        <div class="skill">
-                            <span>JavaScript</span>
-                            <div class="skill-bar"><div class="skill-level" style="width: 90%"></div></div>
-                        </div>
-                        <div class="skill">
-                            <span>Python</span>
-                            <div class="skill-bar"><div class="skill-level" style="width: 85%"></div></div>
-                        </div>
-                        <div class="skill">
-                            <span>HTML/CSS</span>
-                            <div class="skill-bar"><div class="skill-level" style="width: 95%"></div></div>
-                        </div>
-                        <div class="skill">
-                            <span>Java</span>
-                            <div class="skill-bar"><div class="skill-level" style="width: 75%"></div></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3>Frameworks & Tools</h3>
-                    <div class="skill-badges">
-                        <span class="skill-badge">React</span>
-                        <span class="skill-badge">Node.js</span>
-                        <span class="skill-badge">Express</span>
-                        <span class="skill-badge">Git</span>
-                        <span class="skill-badge">Docker</span>
-                        <span class="skill-badge">AWS</span>
-                        <span class="skill-badge">MongoDB</span>
-                        <span class="skill-badge">PostgreSQL</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
 
         <section id="project-gallery" class="section-with-bg">
             <h2><i class="fas fa-code"></i> Projekt Galerie</h2>
-            
-            <!-- Projekt-Filter -->
-            <div class="projekt-filter">
-                <button class="filter-btn active" data-filter="all">Alle</button>
-                <button class="filter-btn" data-filter="web">Web</button>
-                <button class="filter-btn" data-filter="app">Apps</button>
-                <button class="filter-btn" data-filter="tool">Tools</button>
-            </div>
-            
-            <div class="projekt-gallery">
-                <div class="projekt-item" data-category="tool">
-                    <div class="projekt-image" onclick="openLightbox('images/Multi Tool png.png', 'PC Multi-Tool Suite')">
-                        <img src="images/Multi Tool png.png" alt="PC Multi-Tool Suite - Systemoptimierungssoftware" loading="lazy">
-                        <div class="projekt-overlay">
-                            <div class="projekt-tech">Python • Qt • System Integration</div>
+            <section class="section projects-section">
+    
+                <div class="projects-grid">
+                  <div class="project-card">
+                    <div class="slideshow-container">
+                      <img class="rat-slide" src="Bilder/RAT_Projekt_1.png" alt="RAT Projekt" style="display:block;width:100%">
+                     
+                    <div class="card-content">
+                      <h3>RAT Projekt</h3>
+                      <div class="terminal-project">
+                        <div class="terminal-bar">
+                          <span class="dot red"></span>
+                          <span class="dot yellow"></span>
+                          <span class="dot green"></span>
+                          <span class="terminal-title">rat@project:~$</span>
                         </div>
-                    </div>
-                    <h3>PC Multi-Tool Suite</h3>
-                    <p>Eine umfassende Dienstprogrammanwendung, die Systemoptimierung, Dateiverwaltung und Diagnosetools in einer benutzerfreundlichen Oberfläche kombiniert.</p>
-                    <div class="projekt-links">
-                        <a href="https://github.com/Maxify407578/Multi-Pc-Tool" target="_blank" class="btn"><i class="fab fa-github"></i> Code ansehen</a>
-                        <a href="https://github.com/Maxify407578/Multi-Pc-Tool" target="_blank" class="btn btn-alt"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                    </div>
-                </div>
-                <div class="projekt-item" data-category="web">
-                    <div class="projekt-image" onclick="openLightbox('images/Weather_app.png', 'Wetter Dashboard')">
-                        <img src="images/Weather_app.png" alt="Wetter Dashboard Anwendung" onerror="this.src='https://via.placeholder.com/300x200?text=Wetter+App'" loading="lazy">
-                        <div class="projekt-overlay">
-                            <div class="projekt-tech">JavaScript • React • API Integration</div>
+                        <div class="terminal-text">
+                          <span class="command">python rat_server.py</span><br>
+                          <span class="output">[+] Server gestartet auf Port 8080</span><br>
+                          <span class="command">python rat_client.py</span><br>
+                          <span class="output">[+] Verbindung hergestellt</span><br>
+                          <span class="output">[+] Systeminfos abgerufen</span><br>
+                          <span class="output">[+] Kommandoausführung aktiv</span><br>
+                          <span class="tag">Python</span> <span class="tag">Netzwerk</span>
                         </div>
+                      </div>
                     </div>
-                    <h3>Wetter Dashboard</h3>
-                    <p>Eine elegante Wetteranwendung mit Echtzeit-Prognosen, interaktiven Karten und standortbasierten Wetterwarnungen in einem klaren, minimalistischen Design.</p>
-                    <div class="projekt-links">
-                        <a href="https://github.com/Maxify407578/Wheater-App" target="_blank" class="btn"><i class="fab fa-github"></i> Code ansehen</a>
-                        <a href="https://github.com/Maxify407578/Wheater-App" target="_blank" class="btn btn-alt"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                  </div>
+                  <div class="project-card">
+                    <div class="slideshow-container">
+                      <img class="rat-slide" src="Bilder/keylogger.png" alt="Keylogger" style="display:block;width:100%">
+                      
                     </div>
-                </div>
-                <div class="projekt-item" data-category="app">
-                    <div class="projekt-image" onclick="openLightbox('images/Chatbot png.png', 'KI-Konversationsassistent')">
-                        <img src="images/Chatbot png.png" alt="KI-Konversationsassistent" loading="lazy">
-                        <div class="projekt-overlay">
-                            <div class="projekt-tech">Python • NLP • Machine Learning</div>
+                    <div class="card-content">
+                      <h3>Keylogger</h3>
+                      <div class="terminal-project">
+                        <div class="terminal-bar">
+                          <span class="dot red"></span>
+                          <span class="dot yellow"></span>
+                          <span class="dot green"></span>
+                          <span class="terminal-title">keylogger@system:~$</span>
                         </div>
+                        <div class="terminal-text">
+                          <span class="command">python keylogger.py</span><br>
+                          <span class="output">[+] Keylogger gestartet</span><br>
+                          <span class="output">[+] Tastatureingaben werden geloggt</span><br>
+                          <span class="output">[+] Log-Datei: keystrokes.log</span><br>
+                          <span class="output">[+] Monitoring aktiv...</span><br>
+                          <span class="tag">Python</span> <span class="tag">Logging</span>
+                        </div>
+                      </div>
                     </div>
-                    <h3>KI-Konversationsassistent</h3>
-                    <p>Eine intelligente Chatbot-Plattform, die natürliche Sprachverarbeitung nutzt, um kontextbezogene Antworten zu liefern und bei verschiedenen Aufgaben zu helfen.</p>
-                    <div class="projekt-links">
-                        <a href="https://github.com/Maxify407578/Chatbot" target="_blank" class="btn"><i class="fab fa-github"></i> Code ansehen</a>
-                        <a href="https://github.com/Maxify407578/Chatbot" target="_blank" class="btn btn-alt"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                    </div>
-                </div>
-            </div>
+                  </div>
+                  <div class="project-card">
+                    <div class="slideshow-container">
+                      <img class="rat-slide" src="Bilder/Email Spammer.png" alt="Email Spammer" style="display:block;width:100%">
             
-            <div class="view-more-container">
-                <a href="https://github.com/Maxify407578" target="_blank" class="btn btn-large"><i class="fab fa-github"></i> Mehr Projekte auf GitHub</a>
-            </div>
+                    </div>
+                    <div class="card-content">
+                      <h3>Email Spammer</h3>
+                      <div class="terminal-project">
+                        <div class="terminal-bar">
+                          <span class="dot red"></span>
+                          <span class="dot yellow"></span>
+                          <span class="dot green"></span>
+                          <span class="terminal-title">spammer@mail:~$</span>
+                        </div>
+                        <div class="terminal-text">
+                          <span class="command">python email_spammer.py</span><br>
+                          <span class="output">[+] SMTP-Server konfiguriert</span><br>
+                          <span class="output">[+] Ziel-E-Mail: target@example.com</span><br>
+                          <span class="output">[+] Spam-Kampagne gestartet</span><br>
+                          <span class="output">[+] E-Mails werden versendet...</span><br>
+                          <span class="tag">Python</span> <span class="tag">Mail</span> <span class="tag">Automation</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            
+            
+            
+            
         </section>
         
         <!-- Lightbox für Projekt-Bilder -->
@@ -1068,108 +304,35 @@
             </div>
         </div>
 
-        <section id="faq" class="section-with-bg">
-            <h2><i class="fas fa-question-circle"></i> Häufig gestellte Fragen</h2>
-            <div class="faq-container">
-                <details>
-                    <summary>What makes your development approach unique?</summary>
-                    <div class="faq-content">
-                        <p>I approach development with a focus on sustainability, efficiency, and user experience. I believe in writing clean, well-documented code that's maintainable and scalable. My background in both frontend and backend technologies allows me to create cohesive solutions that address all aspects of a project.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary>Which technologies do you specialize in?</summary>
-                    <div class="faq-content">
-                        <p>My core expertise lies in JavaScript ecosystems including React, Node.js, and Express. I'm also proficient in Python for data analysis and backend development. For database solutions, I work with both SQL (PostgreSQL, MySQL) and NoSQL (MongoDB) technologies depending on project requirements.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary>How do you approach collaborative projects?</summary>
-                    <div class="faq-content">
-                        <p>I believe in clear communication, well-defined processes, and regular feedback cycles. I use version control (Git) and project management tools to ensure transparency and accountability. My experience in agile methodologies helps in adapting to changing requirements while maintaining project momentum.</p>
-                    </div>
-                </details>
-                <details>
-                    <summary>What development tools do you use daily?</summary>
-                    <div class="faq-content">
-                        <p>My development environment includes VS Code with productivity extensions, Git for version control, Docker for containerization, and various CI/CD tools for automated testing and deployment. I also use design tools like Figma for UI prototyping and collaboration with designers.</p>
-                    </div>
-                </details>
-            </div>
-        </section>
+        
             
         <!-- Quiz-Komponente -->
-        <section id="quiz" class="quiz-section">
-            <h2>Webentwicklungs-Quiz</h2>
-            
-            <div id="quizIntro" class="quiz-intro active">
-                <p>Testen Sie Ihr Wissen zur Webentwicklung mit unserem kurzen Quiz!</p>
-                <button onclick="startQuiz()" class="quiz-start-btn">Quiz starten</button>
-            </div>
-            
-            <div id="quizQuestion" class="quiz-question">
-                <h3 id="questionText">Frage 1</h3>
-                <div class="quiz-options">
-                    <div class="quiz-option" onclick="selectAnswer(this, 0)" data-value="0">Hyper Text Markup Language</div>
-                    <div class="quiz-option" onclick="selectAnswer(this, 1)" data-value="1">High Tech Modern Language</div>
-                    <div class="quiz-option" onclick="selectAnswer(this, 2)" data-value="2">Hyper Transfer Markup Logic</div>
-                    <div class="quiz-option" onclick="selectAnswer(this, 3)" data-value="3">Home Tool Markup Language</div>
-                </div>
-                <div class="quiz-navigation">
-                    <span id="questionCounter">Frage 1/5</span>
-                    <div class="quiz-buttons">
-                        <button id="prevQuestionBtn" onclick="prevQuestion()" disabled>Zurück</button>
-                        <button id="nextQuestionBtn" onclick="nextQuestion()" disabled>Weiter</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div id="quizResult" class="quiz-result">
-                <h3>Quiz abgeschlossen!</h3>
-                <p>Ihre Punktzahl: <span id="quizScore">0/5</span></p>
-                <p id="quizFeedback"></p>
-                <button onclick="restartQuiz()" class="quiz-restart-btn">Nochmal versuchen</button>
-            </div>
-        </section>
         
-        <!-- Echtzeit-Besucherzähler -->
-        <div class="visitor-counter">
-            <i class="fas fa-users visitor-icon"></i>
-            <span>Besucher: <span id="visitorCounter">1</span></span>
-        </div>
         
         <section id="contact" class="section-with-bg">
-            <h2><i class="fas fa-envelope"></i> Kontakt</h2>
-            <div class="contact-container">
-                <div class="contact-info card">
-                    <h3>Kontaktinformationen</h3>
-                    <ul class="contact-list">
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:maxschueller11@gmail.com">maxschueller11@gmail.com</a></li>
-                        <li><i class="fab fa-github"></i> <a href="https://github.com/Maxify407578" target="_blank">github.com/Maxify407578</a></li>
-                        <li><i class="fab fa-twitter"></i> <a href="https://twitter.com/MaxSchller1" target="_blank">@MaxSchller1</a></li>
-                        <li><i class="fas fa-link"></i> <a href="https://linktr.ee/Maxify37" target="_blank">linktr.ee/Maxify37</a></li>
-                        <li><i class="fab fa-instagram"></i> <a href="https://instagram.com/maxify2813" target="_blank">@maxify2813</a></li>
-                        <li><i class="fab fa-tiktok"></i> <a href="https://tiktok.com/@maxify.1" target="_blank">@maxify.1</a></li>
-                    </ul>
-                    <p>Ich bin immer offen für neue Projekte, kreative Ideen oder Möglichkeiten, Teil Ihrer Vision zu sein.</p>
-                </div>
+            <div class="contact-info card">
+                <h3>Kontakt herstellen
+                </h3>
+                
+                <p>_________________________________________________</p>
+                    
+               
                 <div class="contact-form card">
-                    <h3>Nachricht senden</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Ihr Name" required>
+                
+                    
+                    <div id="terminal-contact" class="terminal-contact">
+                        <div class="terminal-bar">
+                            <span class="terminal-dot dot-red" title="Schließen"></span>
+                            <span class="terminal-dot dot-yellow"></span>
+                            <span class="terminal-dot dot-green"></span>
                         </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Ihre E-Mail" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="subject" name="subject" placeholder="Betreff">
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Ihre Nachricht" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Nachricht senden</button>
-                    </form>
+                        <div id="terminal-output"></div>
+                        <form id="terminal-form" autocomplete="off" onsubmit="return false;">
+                            <span class="terminal-prompt">&gt;</span>
+                            <input id="terminal-input" type="text" autocomplete="off" />
+                            <span class="terminal-cursor">|</span>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1178,20 +341,12 @@
     <footer>
         <div class="footer-content">
             <div class="footer-info">
-                <h3>Maxify407578</h3>
-                <p>Digitale Lösungen mit Leidenschaft und Präzision.</p>
+                <h3></h3>
+              
             </div>
-            <div class="footer-links">
-                <h3>Schnelllinks</h3>
-                <ul>
-                    <li><a href="#about-maxify">Über mich</a></li>
-                    <li><a href="#project-gallery">Projekte</a></li>
-                    <li><a href="#skills">Fähigkeiten</a></li>
-                    <li><a href="#contact">Kontakt</a></li>
-                </ul>
-            </div>
+            
             <div class="social-icons">
-                <h3>Verbinden</h3>
+                <h3> Meine Socials</h3>
                 <div class="social-links">
                     <a href="https://github.com/Maxify407578" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="https://twitter.com/MaxSchller1" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -1202,7 +357,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Maxify407578. Alle Rechte vorbehalten.</p>
+            <p>&copy; 2025 Max. Alle Rechte vorbehalten.</p>
         </div>
     </footer>
 
@@ -1217,611 +372,6 @@
         </div>
     </div>
 
-    <script>
-        // Quiz-Funktionalität
-        const quizQuestions = [
-            {
-                question: "Was steht HTML für?",
-                options: ["Hyper Text Markup Language", "High Tech Modern Language", "Hyper Transfer Markup Logic", "Home Tool Markup Language"],
-                answer: 0
-            },
-            {
-                question: "Welche Sprache wird für Styling verwendet?",
-                options: ["Java", "Python", "CSS", "PHP"],
-                answer: 2
-            },
-            {
-                question: "Was ist JavaScript?",
-                options: ["Eine Programmiersprache", "Eine Datenbank", "Ein Server", "Ein Browser"],
-                answer: 0
-            },
-            {
-                question: "Was ist ein responsives Design?",
-                options: ["Eine schnelle Website", "Design, das sich an verschiedene Bildschirmgrößen anpasst", "Ein modernes Framework", "Ein Design-Tool"],
-                answer: 1
-            },
-            {
-                question: "Was bedeutet SEO?",
-                options: ["Secure External Operation", "Search Engine Optimization", "Social Environment Online", "System Error Output"],
-                answer: 1
-            }
-        ];
-        
-        let currentQuestion = 0;
-        let userAnswers = [-1, -1, -1, -1, -1];
-        
-        function startQuiz() {
-            document.getElementById('quizIntro').classList.remove('active');
-            document.getElementById('quizQuestion').classList.add('active');
-            userAnswers = [-1, -1, -1, -1, -1];
-            currentQuestion = 0;
-            showQuestion(currentQuestion);
-        }
-        
-        function showQuestion(index) {
-            const questionEl = document.getElementById('quizQuestion');
-            const textEl = document.getElementById('questionText');
-            const options = questionEl.querySelectorAll('.quiz-option');
-            
-            textEl.textContent = `Frage ${index + 1}: ${quizQuestions[index].question}`;
-            
-            options.forEach((option, i) => {
-                option.textContent = quizQuestions[index].options[i];
-                option.classList.remove('selected', 'correct', 'incorrect');
-                
-                if (userAnswers[index] === i) {
-                    option.classList.add('selected');
-                }
-            });
-            
-            document.getElementById('questionCounter').textContent = `Frage ${index + 1}/5`;
-            
-            // Button-Status aktualisieren
-            document.getElementById('prevQuestionBtn').disabled = index === 0;
-            document.getElementById('nextQuestionBtn').textContent = index === 4 ? "Abschließen" : "Weiter";
-            document.getElementById('nextQuestionBtn').disabled = userAnswers[index] === -1;
-        }
-        
-        function selectAnswer(element, answerIndex) {
-            // Vorherige Auswahl aufheben
-            const options = element.parentElement.querySelectorAll('.quiz-option');
-            options.forEach(option => option.classList.remove('selected'));
-            
-            // Neue Auswahl markieren
-            element.classList.add('selected');
-            
-            // Antwort speichern
-            userAnswers[currentQuestion] = answerIndex;
-            
-            // Weiter-Button aktivieren
-            document.getElementById('nextQuestionBtn').disabled = false;
-        }
-        
-        function nextQuestion() {
-            if (currentQuestion < 4) {
-                currentQuestion++;
-                showQuestion(currentQuestion);
-            } else {
-                showResult();
-            }
-        }
-        
-        function prevQuestion() {
-            if (currentQuestion > 0) {
-                currentQuestion--;
-                showQuestion(currentQuestion);
-            }
-        }
-        
-        function showResult() {
-            document.getElementById('quizQuestion').classList.remove('active');
-            document.getElementById('quizResult').classList.add('active');
-            
-            // Punktzahl berechnen
-            let score = 0;
-            userAnswers.forEach((answer, index) => {
-                if (answer === quizQuestions[index].answer) {
-                    score++;
-                }
-            });
-            
-            document.getElementById('quizScore').textContent = `${score}/5`;
-            
-            // Feedback anhand der Punktzahl
-            const feedback = document.getElementById('quizFeedback');
-            if (score === 5) {
-                feedback.textContent = "Perfekt! Sie sind ein Webentwicklungs-Experte!";
-            } else if (score >= 3) {
-                feedback.textContent = "Gut gemacht! Sie haben solide Grundkenntnisse.";
-            } else {
-                feedback.textContent = "Sie können noch mehr lernen. Versuchen Sie es erneut!";
-            }
-        }
-        
-        function restartQuiz() {
-            document.getElementById('quizResult').classList.remove('active');
-            document.getElementById('quizIntro').classList.add('active');
-        }
-        
-        // Globale Variablen für die Schriftgröße
-        let currentFontSize = parseInt(window.getComputedStyle(document.body).fontSize) || 16;
-        const minFontSize = 12;
-        const maxFontSize = 24;
-
-        // Schriftgröße ändern
-        function changeFontSize(step) {
-            currentFontSize = Math.max(minFontSize, Math.min(maxFontSize, currentFontSize + step));
-            document.body.style.fontSize = currentFontSize + 'px';
-            localStorage.setItem('preferredFontSize', currentFontSize);
-            
-            // Feedback geben
-            showNotification('Schriftgröße: ' + currentFontSize + 'px');
-        }
-        
-        // Benachrichtigung anzeigen
-        function showNotification(message) {
-            // Entferne vorhandene Benachrichtigungen
-            const oldNotifications = document.querySelectorAll('.notification');
-            oldNotifications.forEach(notification => notification.remove());
-            
-            // Neue Benachrichtigung erstellen
-            const notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            
-            // Animation einschalten
-            setTimeout(() => {
-                notification.classList.add('visible');
-            }, 10);
-            
-            // Nach 3 Sekunden ausblenden
-            setTimeout(() => {
-                notification.classList.remove('visible');
-                setTimeout(() => {
-                    notification.remove();
-                }, 500);
-            }, 3000);
-        }
-        
-        // Zurück nach oben scrollen
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // Theme-Wechsel direkt verfügbar machen
-        function changeTheme(theme) {
-            // Theme setzen
-            document.body.setAttribute('data-theme', theme);
-            localStorage.setItem('preferredTheme', theme);
-            
-            // Aktiven Status aktualisieren
-            document.querySelectorAll('.theme-option').forEach(opt => opt.classList.remove('active'));
-            document.querySelector(`.theme-option[data-theme="${theme}"]`).classList.add('active');
-            
-            // Direkte Farbänderungen für wichtige Elemente - zur Unterstützung älterer Browser
-            if (theme === 'light') {
-                document.body.style.backgroundColor = '#f5f5f5';
-                document.body.style.color = '#333333';
-                document.querySelector('header').style.backgroundColor = '#e0e0e0';
-                document.querySelector('main').style.backgroundColor = '#ffffff';
-                document.querySelectorAll('section h2').forEach(h2 => {
-                    h2.style.color = '#1976d2';
-                    h2.style.borderBottomColor = '#2196f3';
-                });
-            } else if (theme === 'pink') {
-                document.body.style.backgroundColor = '#20062e';
-                document.body.style.color = '#ffffff';
-                document.querySelector('header').style.backgroundColor = '#2e0a42';
-                document.querySelector('main').style.backgroundColor = '#2e0a42';
-                document.querySelectorAll('section h2').forEach(h2 => {
-                    h2.style.color = '#ff44cc';
-                    h2.style.borderBottomColor = '#ff66d9';
-                });
-            } else {
-                // Dunkles Theme
-                document.body.style.backgroundColor = '#121212';
-                document.body.style.color = '#e0e0e0';
-                document.querySelector('header').style.backgroundColor = '#1c1c1c';
-                document.querySelector('main').style.backgroundColor = '#1e1e1e';
-                document.querySelectorAll('section h2').forEach(h2 => {
-                    h2.style.color = '#90caf9';
-                    h2.style.borderBottomColor = '#42a5f5';
-                });
-            }
-            
-            // Feedback in der Konsole
-            console.log('Theme gewechselt zu: ' + theme);
-        }
-        
-        // Toggle navbar on mobile
-        function toggleNavbar() {
-            const navbarLinks = document.getElementById('navbarLinks');
-            navbarLinks.classList.toggle('active');
-        }
-
-        // Realistischer Besucherzähler mit simulierten Server-Daten
-        function initVisitorCounter() {
-            const counterElement = document.getElementById('visitorCounter');
-            if (counterElement) {
-                // Server-Simulation: Basiswert zwischen 1350 und 1400
-                const baseCount = 1373;
-                let visitorCount = baseCount;
-                
-                // Initiale Anzeige
-                counterElement.textContent = visitorCount;
-                
-                // Simulierter Netzwerk-Request
-                setTimeout(() => {
-                    // Kurze Animation als ob Daten geladen würden
-                    counterElement.classList.add('loading');
-                    
-                    setTimeout(() => {
-                        counterElement.classList.remove('loading');
-                        counterElement.classList.add('counter-change');
-                        
-                        // Kleine Zufallsänderung zum Startwert
-                        const initialDelta = Math.floor(Math.random() * 5) - 2;
-                        visitorCount = baseCount + initialDelta;
-                        counterElement.textContent = visitorCount;
-                        
-                        setTimeout(() => {
-                            counterElement.classList.remove('counter-change');
-                        }, 700);
-                    }, 800);
-                }, 1500);
-                
-                // Realistische Schwankungen - manchmal steigt es, manchmal fällt es leicht
-                setInterval(function() {
-                    // Serveranfrage simulieren
-                    counterElement.classList.add('loading');
-                    
-                    setTimeout(() => {
-                        counterElement.classList.remove('loading');
-                        
-                        // Komplexeres Modell für Besucheränderungen
-                        const time = new Date();
-                        const hour = time.getHours();
-                        
-                        // Mehr Besucher tagsüber (9-18 Uhr)
-                        let chance = 0.2; // Grundchance für Änderung
-                        let maxDelta = 2; // Maximale Änderung
-                        
-                        if (hour >= 9 && hour < 18) {
-                            chance = 0.4; // Höhere Änderungswahrscheinlichkeit
-                            maxDelta = 3; // Größere Änderungen möglich
-                        }
-                        
-                        // Nachts (0-6 Uhr) weniger Aktivität
-                        if (hour >= 0 && hour < 6) {
-                            chance = 0.1;
-                            maxDelta = 1;
-                        }
-                        
-                        // Aktivitätsspitze nach Feierabend
-                        if (hour >= 18 && hour < 22) {
-                            chance = 0.5;
-                            maxDelta = 4;
-                        }
-                        
-                        // Zufällige Änderung, mit höherer Wahrscheinlichkeit für Anstieg
-                        if (Math.random() < chance) {
-                            // 70% Wahrscheinlichkeit für Anstieg, 30% für Abfall
-                            const isIncrease = Math.random() < 0.7;
-                            const delta = Math.floor(Math.random() * maxDelta) + 1;
-                            
-                            if (isIncrease) {
-                                visitorCount += delta;
-                            } else {
-                                // Nicht unter den Basiswert fallen
-                                visitorCount = Math.max(baseCount - 10, visitorCount - delta);
-                            }
-                            
-                            counterElement.classList.add('counter-change');
-                            counterElement.textContent = visitorCount;
-                            
-                            setTimeout(() => {
-                                counterElement.classList.remove('counter-change');
-                            }, 700);
-                        }
-                    }, 400);
-                }, 8000); // Alle 8 Sekunden aktualisieren
-            }
-        }
-        
-        // Offline-Status überwachen
-        function checkOfflineStatus() {
-            const offlineNotification = document.getElementById('offlineNotification');
-            
-            if (!navigator.onLine) {
-                offlineNotification.classList.add('visible');
-                showNotification('Sie sind offline. Einige Funktionen sind eingeschränkt.');
-            } else {
-                offlineNotification.classList.remove('visible');
-            }
-        }
-        
-        // Bei Statusänderungen überprüfen
-        window.addEventListener('online', checkOfflineStatus);
-        window.addEventListener('offline', checkOfflineStatus);
-        
-        // Verbessertes Bilderladen
-        function lazyLoadImages() {
-            const images = document.querySelectorAll('img[loading="lazy"]');
-            
-            if ('IntersectionObserver' in window) {
-                const imageObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const image = entry.target;
-                            image.src = image.dataset.src || image.src;
-                            observer.unobserve(image);
-                        }
-                    });
-                });
-                
-                images.forEach(image => {
-                    imageObserver.observe(image);
-                });
-            }
-        }
-    </script>
-    
-    <!-- JavaScript am Ende der Seite -->
-    <script>
-        // Sofortige Ausführung, um sicherzustellen, dass alle Inhalte angezeigt werden
-        (function() {
-            // Löscht mögliche alte Styles, die das Scrollen verhindern
-            document.body.style.overflow = 'auto';
-            document.documentElement.style.overflow = 'auto';
-            document.documentElement.style.height = 'auto';
-            document.body.style.height = 'auto';
-            
-            // Fade-in Animation für Sektionen deaktivieren
-            document.querySelectorAll('.section-with-bg').forEach(function(section) {
-                section.classList.add('fade-in');
-                section.style.opacity = '1';
-                section.style.transform = 'translateY(0)';
-            });
-            
-            // Alle Sektionen sichtbar machen
-            document.querySelectorAll('section').forEach(function(section) {
-                section.style.display = 'block';
-                section.style.visibility = 'visible';
-                section.style.opacity = '1';
-            });
-            
-            // Main-Inhalt sichtbar machen
-            const main = document.querySelector('main');
-            if (main) {
-                main.style.display = 'block';
-            }
-            
-            // Footer sichtbar machen
-            const footer = document.querySelector('footer');
-            if (footer) {
-                footer.style.display = 'block';
-            }
-        })();
-        
-        // Reguläre DOMContentLoaded Event-Handler
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log("DOM vollständig geladen");
-            // Rest des Codes zur Initialisierung der Seite
-            initLanguageSelector();
-            initVisitorCounter();
-            console.log("Sprachauswahl und Besucherzähler wurden initialisiert");
-        });
-    </script>
-    
-    <!-- Service Worker für Offline-Funktionalität -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('service-worker.js')
-                    .then(function(registration) {
-                        console.log('ServiceWorker registriert: ', registration.scope);
-                    })
-                    .catch(function(error) {
-                        console.log('ServiceWorker Registration fehlgeschlagen: ', error);
-                    });
-            });
-        }
-    </script>
-
-    <!-- Notfall-Fallback für die Navigation -->
-    <script>
-        // Stellt sicher, dass alle Navigationslinks funktionieren
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    
-                    if (targetElement) {
-                        // Stelle sicher, dass das Zielelement sichtbar ist
-                        targetElement.style.display = 'block';
-                        targetElement.style.visibility = 'visible';
-                        targetElement.style.opacity = '1';
-                        
-                        // Scrolle zum Zielelement
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                        
-                        console.log("Navigation zu:", targetId);
-                    } else {
-                        console.warn("Zielelement nicht gefunden:", targetId);
-                    }
-                });
-            });
-            
-            // Nach dem Laden der Seite überprüfen, ob alle erforderlichen Elemente vorhanden sind
-            ['about-maxify', 'skills', 'project-gallery', 'faq', 'contact'].forEach(id => {
-                if (!document.getElementById(id)) {
-                    console.error("Wichtiges Element fehlt:", id);
-                } else {
-                    console.log("Element gefunden:", id);
-                }
-            });
-        });
-    </script>
-
-    <!-- Particle-Effekt JavaScript -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const canvas = document.getElementById('particle-canvas');
-            const ctx = canvas.getContext('2d');
-            
-            // Canvas-Größe an Header anpassen
-            function resizeCanvas() {
-                const header = document.querySelector('.animated-header');
-                canvas.width = header.offsetWidth;
-                canvas.height = header.offsetHeight;
-            }
-            
-            window.addEventListener('resize', resizeCanvas);
-            resizeCanvas();
-            
-            // Partikel erstellen
-            const particleCount = Math.floor(window.innerWidth / 10);
-            const particles = [];
-            
-            for (let i = 0; i < particleCount; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    radius: Math.random() * 2 + 0.5,
-                    color: `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.2})`,
-                    speedX: Math.random() * 1 - 0.5,
-                    speedY: Math.random() * 1 - 0.5,
-                    directionChangeTime: Math.random() * 100 + 50
-                });
-            }
-            
-            // Animation
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                // Partikel zeichnen und bewegen
-                particles.forEach(particle => {
-                    // Partikel zeichnen
-                    ctx.beginPath();
-                    ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = particle.color;
-                    ctx.fill();
-                    
-                    // Richtungsänderung
-                    if (Math.random() < 0.01) {
-                        particle.speedX = Math.random() * 1 - 0.5;
-                        particle.speedY = Math.random() * 1 - 0.5;
-                    }
-                    
-                    // Bewegung
-                    particle.x += particle.speedX;
-                    particle.y += particle.speedY;
-                    
-                    // Grenzen prüfen
-                    if (particle.x < 0) particle.x = canvas.width;
-                    if (particle.x > canvas.width) particle.x = 0;
-                    if (particle.y < 0) particle.y = canvas.height;
-                    if (particle.y > canvas.height) particle.y = 0;
-                });
-                
-                // Verbindungen zwischen nahen Partikeln
-                particles.forEach((a, i) => {
-                    particles.slice(i + 1).forEach(b => {
-                        const dx = a.x - b.x;
-                        const dy = a.y - b.y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-                        
-                        if (distance < 100) {
-                            ctx.beginPath();
-                            ctx.moveTo(a.x, a.y);
-                            ctx.lineTo(b.x, b.y);
-                            ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 - distance/1000})`;
-                            ctx.lineWidth = 0.5;
-                            ctx.stroke();
-                        }
-                    });
-                });
-                
-                requestAnimationFrame(animate);
-            }
-            
-            animate();
-        });
-    </script>
-
-    <!-- Typing Animation JavaScript -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const typingText = document.querySelector('.typing-text');
-            const typingCursor = document.querySelector('.typing-cursor');
-            
-            const words = [
-                "Webentwickler", 
-                "Designer", 
-                "UI/UX Experte",
-                "Problem-Löser",
-                "Innovator"
-            ];
-            
-            let wordIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            let isWaiting = false;
-            
-            function type() {
-                const currentWord = words[wordIndex];
-                
-                if (isWaiting) {
-                    // Verzögerung nach vollendetem Wort
-                    setTimeout(() => {
-                        isWaiting = false;
-                        isDeleting = true;
-                        type();
-                    }, 1500);
-                    return;
-                }
-                
-                if (isDeleting) {
-                    // Wort löschen
-                    typingText.textContent = currentWord.substring(0, charIndex - 1);
-                    charIndex--;
-                    
-                    if (charIndex === 0) {
-                        isDeleting = false;
-                        wordIndex = (wordIndex + 1) % words.length;
-                    }
-                } else {
-                    // Wort schreiben
-                    typingText.textContent = currentWord.substring(0, charIndex + 1);
-                    charIndex++;
-                    
-                    if (charIndex === currentWord.length) {
-                        isWaiting = true;
-                    }
-                }
-                
-                // Geschwindigkeit anpassen
-                let typeSpeed = isDeleting ? 80 : 150;
-                setTimeout(type, typeSpeed);
-            }
-            
-            // Cursor-Animation
-            setInterval(() => {
-                typingCursor.style.opacity = typingCursor.style.opacity === '0' ? '1' : '0';
-            }, 500);
-            
-            // Typing starten
-            setTimeout(type, 1000);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
