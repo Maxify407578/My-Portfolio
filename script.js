@@ -77,7 +77,11 @@ function changeTheme(theme) {
 
 function toggleNavbar() {
     const navbarLinks = document.getElementById('navbarLinks');
-    navbarLinks.classList.toggle('active');
+    if (navbarLinks.classList.contains('active')) {
+        navbarLinks.classList.remove('active');
+    } else {
+        navbarLinks.classList.add('active');
+    }
 }
 
 

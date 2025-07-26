@@ -174,12 +174,24 @@ header p {
         max-height: 0;
         opacity: 0;
         overflow: hidden;
-        transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
+        transform: translateY(-20px);
+        transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.4s, transform 0.5s cubic-bezier(0.4,0,0.2,1);
     }
     .navbar-links.active {
-        max-height: 500px; /* ausreichend für alle Links */
+        max-height: 500px;
         opacity: 1;
-        transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease;
+        transform: translateY(0);
+        animation: dropdownFadeIn 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    @keyframes dropdownFadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .navbar-toggle {
@@ -213,19 +225,22 @@ nav .dropdown {
     position: relative;
 }
 
+/* Coole Dropdown-Animation */
 nav .dropdown-content {
     display: block;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    transform: translateY(-10px) scaleY(0.8);
+    transition: opacity 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.4s cubic-bezier(0.4,0,0.2,1), visibility 0.3s;
+    pointer-events: none;
+    will-change: opacity, transform;
 }
-
 nav .dropdown:hover .dropdown-content,
 nav .dropdown:focus-within .dropdown-content {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateY(0) scaleY(1);
+    pointer-events: auto;
 }
 
 nav .dropdown-content a {
@@ -2022,6 +2037,21 @@ main, footer {
     text-align: left;
     font-family: inherit;
 }
+.terminal-icons {
+  margin-top: 0.7em;
+  display: flex;
+  gap: 0.7em;
+  font-size: 1.25em;
+  align-items: center;
+}
+.terminal-icons i {
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
+  transition: transform 0.2s;
+}
+.terminal-icons i:hover {
+  transform: scale(1.18) rotate(-7deg);
+  filter: brightness(1.2) drop-shadow(0 2px 4px rgba(0,0,0,0.18));
+}
 @media (max-width: 500px) {
     .terminal-box {
         max-width: 98vw;
@@ -2287,5 +2317,78 @@ main, footer {
   }
   .project-card {
     padding: 1rem;
+  }
+}
+
+/* --- Mobile & Tablet Optimierung --- */
+@media (max-width: 992px) {
+  .about-container, .projects-grid, .interests-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.2rem !important;
+  }
+  .header-content {
+    padding: 2rem 0.5rem !important;
+  }
+  .section-with-bg {
+    padding: 1.2rem 0.5rem !important;
+  }
+  .card, .project-card {
+    padding: 1rem !important;
+    margin-bottom: 1.2rem !important;
+  }
+  .glow-text, h1, h2 {
+    font-size: 1.3rem !important;
+  }
+  .btn, .btn-hero {
+    font-size: 1rem !important;
+    padding: 14px 0 !important;
+    width: 100%;
+    min-height: 48px;
+    margin-top: 10px;
+  }
+  .profile-image img, .rat-slide {
+    max-width: 100%;
+    height: auto !important;
+    border-radius: 10px;
+  }
+  .footer-content, .footer-info, .social-icons {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .footer-content h3 {
+    font-size: 1.1rem !important;
+  }
+  .footer-bottom {
+    font-size: 0.9rem !important;
+  }
+}
+@media (max-width: 600px) {
+  .header-content {
+    padding: 1rem 0.2rem !important;
+  }
+  .glow-text, h1, h2 {
+    font-size: 1.05rem !important;
+  }
+  .btn, .btn-hero {
+    font-size: 0.95rem !important;
+    min-height: 44px;
+  }
+  .navbar-container {
+    padding: 0.5rem !important;
+  }
+  .logo {
+    font-size: 1rem !important;
+  }
+  .terminal-box {
+    max-width: 100vw !important;
+    font-size: 0.95rem !important;
+    padding: 0.7rem 0.5rem !important;
+  }
+  .project-card, .card {
+    padding: 0.7rem !important;
+  }
+  .footer-content {
+    padding: 0.5rem !important;
   }
 }
