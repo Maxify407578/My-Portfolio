@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+
 <head>
+    <link type="image/png" sizes="16x16" rel="icon" href=".../icons8-external-linux-eine-familie-von-open-source-unix-ähnlichen-betriebssystemen-basierend-auf-dem-linux-kernel-logo-color-tal-revivo-external-tal-revivo-color-tal-revivo-16.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Professional portfolio of Maxify407578 - Web Developer and Software Engineer">
     <meta name="keywords" content="web development, software engineering, portfolio, projects">
     <meta name="theme-color" content="#121212">
-    <title>Maxify407578 - Professional Portfolio</title>
+    <title> /Coding/Portfolio</title>
     <link rel="icon" type="image" href="d9e89059-98b0-40f5-b6fd-6617dcf6752a.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -32,7 +33,7 @@
         </svg>
     </button>
     
-    <header class="animated-header">
+    <header id="Startseite" class="animated-header">
         <div class="particle-container">
             <canvas id="particle-canvas"></canvas>
         </div>
@@ -43,7 +44,7 @@
                 <span class="typing-text"></span>
                 <span class="typing-cursor">|</span>
             </div>
-            <p class="fade-in-text">Innovative Lösungen für moderne Herausforderungen</p>
+          
             <div class="header-buttons">
                 <a href="#about-maxify" class="btn btn-hero">Über mich</a>
                 <a href="#project-gallery" class="btn btn-hero btn-outline">Projekte entdecken</a>
@@ -54,13 +55,13 @@
     
     <nav class="navbar">
         <div class="navbar-container">
-            <div class="logo">Portfolio</div>
+            <div class="logo">CD ~/Coding/Portfolio</div>
             <div class="navbar-toggle" onclick="toggleNavbar()">☰</div>
             <ul class="navbar-links" id="navbarLinks">
-                <li><a href="#"><i class="fas fa-home"></i> Startseite</a></li>
+                <li><a href="#Startseite"><i class="fas fa-home"></i> Startseite</a></li>
                 <li><a href="#about-maxify"><i class="fas fa-user"></i> Über mich</a></li>
-                <li><a href="#project-gallery"><i class="fas fa-code"></i> Projekte</a></li>
                 <li><a href="#Areas of Expertise"><i class="fas fa-cogs"></i> Fähigkeiten</a></li>
+                <li><a href="#project-gallery"><i class="fas fa-code"></i> Projekte</a></li>
                 <li><a href="#contact"><i class="fas fa-envelope"></i> Kontakt</a></li>
             </ul>
         </div>
@@ -100,7 +101,7 @@
                                     <div class="terminal-text">
                                         <h1>über mich</h1>
                                         <span>Willkommen auf meinem Coding-Portfolio!</span><br>
-                                        <span>Schau dich um und entdecke<br>meine Projekte und Skills.</span>
+                                        <span>Schau dich um und entdecke meine Projekte und Skills.</span>
                                     </div>
                                 </div>
                             <div class="stats-container">
@@ -168,11 +169,7 @@
             <div id="Areas of Expertise" class="interests card">
                 
                 <h3>Areas of Expertise:</h3>
-                <div class="interests-grid">
-                    <div class="interest-item">
-                        <div class="interest-icon"><i class="fas fa-brain"></i></div>
-                        <div class="interest-text">Artificial Intelligence</div>
-                    </div>
+                
                     <div class="interest-item">
                         <div class="interest-icon"><i class="fas fa-users"></i></div>
                         <div class="interest-text">Open Source</div>
@@ -185,14 +182,8 @@
                         <div class="interest-icon"><i class="fas fa-code"></i></div>
                         <div class="interest-text">Web Frameworks</div>
                     </div>
-                    <div class="interest-item">
-                        <div class="interest-icon"><i class="fas fa-link"></i></div>
-                        <div class="interest-text">Blockchain</div>
-                    </div>
-                    <div class="interest-item">
-                        <div class="interest-icon"><i class="fas fa-cloud"></i></div>
-                        <div class="interest-text">Cloud Computing</div>
-                    </div>
+                    
+                   
                     <div class="interest-item">
                         <div class="interest-icon"><i class="fas fa-paint-brush"></i></div>
                         <div class="interest-text">UI/UX Design</div>
@@ -214,10 +205,11 @@
                 <div class="projects-grid">
                   <div class="project-card">
                     <div class="slideshow-container">
+                        <h3>RAT Projekt</h3>
                       <img class="rat-slide" src="Bilder/RAT_Projekt_1.png" alt="RAT Projekt" style="display:block;width:100%">
                      
                     <div class="card-content">
-                      <h3>RAT Projekt</h3>
+                      
                       <div class="terminal-project">
                         <div class="terminal-bar">
                           <span class="dot red"></span>
@@ -239,11 +231,12 @@
                   </div>
                   <div class="project-card">
                     <div class="slideshow-container">
+                        <h3>Keylogger</h3>
                       <img class="rat-slide" src="Bilder/keylogger.png" alt="Keylogger" style="display:block;width:100%">
                       
                     </div>
                     <div class="card-content">
-                      <h3>Keylogger</h3>
+                      
                       <div class="terminal-project">
                         <div class="terminal-bar">
                           <span class="dot red"></span>
@@ -264,11 +257,12 @@
                   </div>
                   <div class="project-card">
                     <div class="slideshow-container">
+                        <h3>Email Spammer</h3>
                       <img class="rat-slide" src="Bilder/Email Spammer.png" alt="Email Spammer" style="display:block;width:100%">
             
                     </div>
                     <div class="card-content">
-                      <h3>Email Spammer</h3>
+                      
                       <div class="terminal-project">
                         <div class="terminal-bar">
                           <span class="dot red"></span>

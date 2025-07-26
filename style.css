@@ -2259,3 +2259,33 @@ main, footer {
 .terminal-contact {
     background: #18132a !important;
 }
+
+/* Fix für Projekt-Galerie Überlappung */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.project-card {
+  background: var(--card-bg, #23242a);
+  border-radius: 16px;
+  box-shadow: var(--box-shadow);
+  padding: 1.5rem;
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .project-card {
+    padding: 1rem;
+  }
+}

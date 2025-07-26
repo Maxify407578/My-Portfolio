@@ -80,63 +80,7 @@ function toggleNavbar() {
     navbarLinks.classList.toggle('active');
 }
 
-function initVisitorCounter() {
-    const counterElement = document.getElementById('visitorCounter');
-    if (counterElement) {
-        const baseCount = 1373;
-        let visitorCount = baseCount;
-        counterElement.textContent = visitorCount;
-        setTimeout(() => {
-            counterElement.classList.add('loading');
-            setTimeout(() => {
-                counterElement.classList.remove('loading');
-                counterElement.classList.add('counter-change');
-                const initialDelta = Math.floor(Math.random() * 5) - 2;
-                visitorCount = baseCount + initialDelta;
-                counterElement.textContent = visitorCount;
-                setTimeout(() => {
-                    counterElement.classList.remove('counter-change');
-                }, 700);
-            }, 800);
-        }, 1500);
-        setInterval(function() {
-            counterElement.classList.add('loading');
-            setTimeout(() => {
-                counterElement.classList.remove('loading');
-                const time = new Date();
-                const hour = time.getHours();
-                let chance = 0.2;
-                let maxDelta = 2;
-                if (hour >= 9 && hour < 18) {
-                    chance = 0.4;
-                    maxDelta = 3;
-                }
-                if (hour >= 0 && hour < 6) {
-                    chance = 0.1;
-                    maxDelta = 1;
-                }
-                if (hour >= 18 && hour < 22) {
-                    chance = 0.5;
-                    maxDelta = 4;
-                }
-                if (Math.random() < chance) {
-                    const isIncrease = Math.random() < 0.7;
-                    const delta = Math.floor(Math.random() * maxDelta) + 1;
-                    if (isIncrease) {
-                        visitorCount += delta;
-                    } else {
-                        visitorCount = Math.max(baseCount - 10, visitorCount - delta);
-                    }
-                    counterElement.classList.add('counter-change');
-                    counterElement.textContent = visitorCount;
-                    setTimeout(() => {
-                        counterElement.classList.remove('counter-change');
-                    }, 700);
-                }
-            }, 400);
-        }, 8000);
-    }
-}
+
 
 function checkOfflineStatus() {
     const offlineNotification = document.getElementById('offlineNotification');
@@ -193,11 +137,7 @@ function lazyLoadImages() {
     }
 })();
 
-document.addEventListener('DOMContentLoaded', function() {
-    console.log("DOM vollständig geladen");
-    initVisitorCounter();
-    console.log("Besucherzähler wurde initialisiert");
-});
+
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
@@ -452,7 +392,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  output.innerHTML = '> Interaktives Kontakt-Terminal\n';
+  output.innerHTML = '>  Kontakt-Terminal\n';
   askStep();
 });
 
